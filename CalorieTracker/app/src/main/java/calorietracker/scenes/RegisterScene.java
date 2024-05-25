@@ -67,12 +67,14 @@ public class RegisterScene {
         stage.show();
 
         buttonSignup.setOnAction(e -> {
-            String email = textFieldEmail.getText();
-            String password = passwordField.getText();
-            if (email.isEmpty() || password.isEmpty()){
-                labelStatus.setText("Email dan password harus diisi!");
-                return;
-            }
+            // String email = textFieldEmail.getText();
+            // String password = passwordField.getText();
+            // if (email.isEmpty() || password.isEmpty()){
+            //     labelStatus.setText("Email dan password harus diisi!");
+            //     return;
+            // }
+            AKGCountScene akgCountScene = new AKGCountScene(stage);
+            akgCountScene.show();
         });
 
         labelLogIn.setOnMouseClicked(e -> {
