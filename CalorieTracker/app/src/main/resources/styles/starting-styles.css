@@ -1,75 +1,116 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 .label-calorie {
+    font-family: 'Poppins';
     -fx-font-family: 'Poppins';
+    font-weight: 900;
     -fx-font-weight: 900;
+    max-height: 80px;
     -fx-max-height: 80px;
+    min-height: 80px;
     -fx-min-height: 80px;
+    font-size: 75px;
     -fx-font-size: 75px;
     -fx-text-fill: #95ECC6;
     -fx-effect: dropshadow(gaussian, #2f5447, 0, 0, 3, 3);
 }
 
 .label-tracker {
+    font-family: 'Poppins';
     -fx-font-family: 'Poppins';
+    font-weight: 900;
     -fx-font-weight: 900;
+    font-size: 75px;
     -fx-font-size: 75px;
+    max-height: 80px;
     -fx-max-height: 80px;
+    min-height: 80px;
     -fx-min-height: 80px;
     -fx-text-fill: #FFB8BF;
     -fx-effect: dropshadow(gaussian, #720808, 0, 0, 3, 3);
 }
 
 .tf-email {
+    background-color: #95ECC6;
     -fx-background-color: #95ECC6;
+    border-width: 1.5px;
     -fx-border-width: 1.5px;
-    -fx-border-color: #2f5447;   
+    border-color: #2f5447; 
+    -fx-border-color: #2f5447; 
+    border-radius: 25;   
     -fx-border-radius: 25;   
     -fx-background-radius: 25;    
     -fx-prompt-text-fill: #2f5447;        
     -fx-font-family: 'Poppins';
+    font-family: 'Poppins';
+    font-size: 13px;
     -fx-font-size: 13px;
+    padding: 15px;
     -fx-padding: 15px;
     -fx-text-fill: #2f5447;
+    max-width: 260px;
     -fx-max-width: 260px;
+    max-height: 45;
     -fx-max-height: 45;
+    min-height: 45;
     -fx-min-height: 45;
 }
 
 .tf-password {
+    background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
+    border-width: 1.5px;
     -fx-border-width: 1.5px;
-    -fx-border-color: #720808;   
+    border-color: #720808;  
+    -fx-border-color: #720808;  
+    border-radius: 25;  
     -fx-border-radius: 25;   
     -fx-background-radius: 25;    
-    -fx-prompt-text-fill: #720808;        
+    -fx-prompt-text-fill: #720808; 
+    font-family: 'Poppins';       
     -fx-font-family: 'Poppins';
+    font-size: 13px;
     -fx-font-size: 13px;
+    padding: 15px;
     -fx-padding: 15px;
     -fx-text-fill: #720808;
+    max-width: 260px;
     -fx-max-width: 260px;
+    max-height: 45;
     -fx-max-height: 45;
+    min-height: 45;
     -fx-min-height: 45;
 }
 
 .starting-button {
+    background-color: #95ECC6; 
     -fx-background-color: #95ECC6; 
-    -fx-border-color: #2f5447;    
+    border-color: #2f5447; 
+    -fx-border-color: #2f5447;  
+    border-radius: 50;  
     -fx-border-radius: 50;     
+    border-width: 1.5px; 
     -fx-border-width: 1.5px;   
-    -fx-background-radius: 50;    
+    -fx-background-radius: 50; 
+    font-family: 'Poppins';
     -fx-font-family: 'Poppins';
+    font-weight: bold;
     -fx-font-weight: bold;
+    font-size: 20px;
     -fx-font-size: 20px;
     -fx-text-fill: #2f5447; 
     -fx-alignment: center;
+    max-width: 260px;
     -fx-max-width: 260px;
+    max-height: 45;
     -fx-max-height: 45;
+    min-height: 45;
     -fx-min-height: 45;
 }
 
 .red-label {
-    -fx-text-fill: #720808; 
+    -fx-text-fill: #720808;
+    font-family: 'Poppins'; 
     -fx-font-family: 'Poppins';
-    -fx-font-size: 13;
+    font-size: 13px;
 }

@@ -5,6 +5,7 @@ import calorietracker.scenes.SplashScreen;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -15,6 +16,8 @@ public class App extends Application {
         stage.setTitle("Calorie Tracker");
         stage.setResizable(false);
         
+        Image imageIcon = new Image(getClass().getResourceAsStream("/images/logo_calorietracker.png"));
+        stage.getIcons().add(imageIcon);
         SplashScreen splashScreen = new SplashScreen(stage);
         splashScreen.show();
 
