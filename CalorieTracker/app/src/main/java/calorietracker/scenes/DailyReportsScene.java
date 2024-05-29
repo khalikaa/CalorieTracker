@@ -29,6 +29,10 @@ public class DailyReportsScene {
 
         Button buttonTambah = new Button("TAMBAH MAKANAN");
         buttonTambah.getStyleClass().add("button-tambah");
+        buttonTambah.setOnAction(e -> {
+            AddFoodScene addFoodScene = new AddFoodScene(stage);
+            addFoodScene.show();
+        });
 
         Button buttonCatatanHarian = new Button("CATATAN HARIAN");
         buttonCatatanHarian.getStyleClass().add("button-catatan");

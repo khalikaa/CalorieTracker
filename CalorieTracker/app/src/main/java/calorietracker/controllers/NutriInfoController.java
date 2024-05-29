@@ -1,16 +1,12 @@
 package calorietracker.controllers;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import calorietracker.config.DbConfig;
 import calorietracker.models.NutriInfo;
-import calorietracker.models.User;
 
-public class NutriInfoController extends DbConfig {
-    
-    //MEMBACA SMUA FILE DI DATABASE
+public class NutriInfoController extends DbConfig {    
     public static List<NutriInfo> getAllFood() {
         List<NutriInfo> foods = new ArrayList<>();
         query = "SELECT * FROM nutri_info";
@@ -19,7 +15,6 @@ public class NutriInfoController extends DbConfig {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                //resultset sepertinya membaca dr tabel yg diminta
                 int id = resultSet.getInt("id");
                 String nama = resultSet.getString("nama");
                 int energi = resultSet.getInt("energi");
