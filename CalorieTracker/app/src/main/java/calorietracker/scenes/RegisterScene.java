@@ -1,5 +1,6 @@
 package calorietracker.scenes;
 
+import calorietracker.controllers.UsersController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -37,10 +38,10 @@ public class RegisterScene {
         boxTitle.setAlignment(Pos.CENTER);
         VBox.setMargin(boxTitle, new Insets(0, 0, 30, 0));
 
-        TextField textFieldEmail = new TextField();
-        textFieldEmail.setPromptText("Email");
-        textFieldEmail.getStyleClass().add("tf-email");
-        
+        TextField textFieldUsername = new TextField();
+        textFieldUsername.setPromptText("Username");
+        textFieldUsername.getStyleClass().add("tf-username");
+
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Password");
         passwordField.getStyleClass().add("tf-password");
@@ -54,7 +55,7 @@ public class RegisterScene {
         Label labelLogIn = new Label("Sudah punya akun? Masuk di sini!");
         labelLogIn.getStyleClass().add("red-label");
 
-        VBox mainLayout = new VBox(11, boxTitle, textFieldEmail, passwordField, labelStatus, buttonSignup, labelLogIn);
+        VBox mainLayout = new VBox(11, boxTitle, textFieldUsername, passwordField, labelStatus, buttonSignup, labelLogIn);
         mainLayout.setAlignment(Pos.CENTER);
         mainLayout.setPadding(new Insets(0, 0, 40, 325));
         
@@ -67,8 +68,18 @@ public class RegisterScene {
         stage.show();
 
         buttonSignup.setOnAction(e -> {
-            AKGCountScene akgCountScene = new AKGCountScene(stage);
-            akgCountScene.show();
+            String username = textFieldUsername.getText();
+            String password = passwordField.getText();
+            if (username.isEmpty() || password.isEmpty()) {
+                labelStatus.setText("Data tidak boleh kosong!");
+                return;
+            }
+            if (UsersController.register(username, password)) {
+                AKGCountScene akgCountScene = new AKGCountScene(stage);
+                akgCountScene.show();
+           } else {
+                labelStatus.setText("Gagal mendaftar. Pastikan data yang diisi benar!");
+            }
         });
 
         labelLogIn.setOnMouseClicked(e -> {

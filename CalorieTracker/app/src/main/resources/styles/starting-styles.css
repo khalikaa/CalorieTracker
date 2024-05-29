@@ -30,7 +30,7 @@
     -fx-effect: dropshadow(gaussian, #720808, 0, 0, 3, 3);
 }
 
-.tf-email {
+.tf-username {
     background-color: #95ECC6;
     -fx-background-color: #95ECC6;
     border-width: 1.5px;

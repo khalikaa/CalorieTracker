@@ -1,5 +1,7 @@
 package calorietracker.scenes;
 
+import calorietracker.controllers.UsersController;
+import calorietracker.models.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -37,9 +39,9 @@ public class LoginScene {
         boxTitle.setAlignment(Pos.CENTER);
         VBox.setMargin(boxTitle, new Insets(0, 0, 30, 0));
 
-        TextField textFieldEmail = new TextField();
-        textFieldEmail.setPromptText("Email");
-        textFieldEmail.getStyleClass().add("tf-email");
+        TextField textFieldUsername = new TextField();
+        textFieldUsername.setPromptText("Username");
+        textFieldUsername.getStyleClass().add("tf-username");
         
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Password");
@@ -54,7 +56,7 @@ public class LoginScene {
         Label labelRegister = new Label("Belum punya akun? Daftar di sini!");
         labelRegister.getStyleClass().add("red-label");
 
-        VBox mainLayout = new VBox(11, boxTitle, textFieldEmail, passwordField, labelStatus, buttonLogin, labelRegister);
+        VBox mainLayout = new VBox(11, boxTitle, textFieldUsername, passwordField, labelStatus, buttonLogin, labelRegister);
         mainLayout.setAlignment(Pos.CENTER);
         mainLayout.setPadding(new Insets(0, 0, 40, 325));
         
@@ -67,14 +69,21 @@ public class LoginScene {
         stage.show();
 
         buttonLogin.setOnAction(e -> {
-            String email = textFieldEmail.getText();
+            String email = textFieldUsername.getText();
             String password = passwordField.getText();
             if (email.isEmpty() || password.isEmpty()){
                 labelStatus.setText("Email dan password harus diisi!");
                 return;
             }
+            
+            User user = UsersController.login(email, password);
+            if (user != null) {
+                DailyReportsScene dailyReportsScene = new DailyReportsScene(stage);
+                dailyReportsScene.show();
+            } else { //misalnya akun tdk ditemukan
+                labelStatus.setText("Email atau password salah!");
+            }
         });
-
         labelRegister.setOnMouseClicked(e -> {
             RegisterScene registerScene = new RegisterScene(stage);
             registerScene.show();
