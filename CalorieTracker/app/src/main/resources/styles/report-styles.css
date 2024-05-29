@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+.label-laporan{
+    background-color:  #efacb3;
+    -fx-background-color: #efacb3;
+    border-color:  #720808;
+    -fx-border-color: #720808;
+    border-width: 2px ;
+    -fx-border-width: 2px;
+    border-radius: 15;
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 500px;
+    -fx-max-width: 500px;
+    max-height: 300;
+    -fx-max-height: 300;
+    min-width: 500;
+    -fx-min-width: 500;
+    min-height: 250;
+    -fx-min-height: 250;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+
+}
+.button-tambah{
+    background-color: #efacb3;
+    -fx-background-color: #efacb3;
+    border-color: #720808;
+    -fx-border-color: #720808;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 15;
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 500px;
+    -fx-max-width: 500px;
+    max-height: 65;
+    -fx-max-height: 65;
+    min-height: 65;
+    -fx-min-height: 65;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+
+}
+
+.button-catatan{
+    background-color: #efacb3;
+    -fx-background-color: #efacb3;
+    /* border-color: #720808;
+    -fx-border-color: #720808; */
+    border-width: 2px;
+    -fx-border-width: 2px;
+    /* -fx-border-radius: 15; */
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 380px;
+    -fx-max-width: 380px;
+    max-height: 50;
+    -fx-max-height: 50;
+    min-height: 30;
+    -fx-min-height: 30;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+
+}
+.button-laporan{
+    background-color: #FDCCD1;
+    -fx-background-color: #FDCCD1;
+    /* border-color: #720808;
+    -fx-border-color: #720808; */
+    border-width: 2px;
+    -fx-border-width: 2px;
+    /* -fx-border-radius: 15; */
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 373px;
+    -fx-max-width: 373px;
+    max-height: 50;
+    -fx-max-height: 50;
+    min-height: 30;
+    -fx-min-height: 30;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+
+}

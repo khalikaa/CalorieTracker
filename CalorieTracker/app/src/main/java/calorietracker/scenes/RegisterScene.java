@@ -62,17 +62,11 @@ public class RegisterScene {
         
         VBox root = new VBox(stackPane);
         Scene scene = new Scene(root, 750, 500);
-        scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/starting-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 
         buttonSignup.setOnAction(e -> {
-            // String email = textFieldEmail.getText();
-            // String password = passwordField.getText();
-            // if (email.isEmpty() || password.isEmpty()){
-            //     labelStatus.setText("Email dan password harus diisi!");
-            //     return;
-            // }
             AKGCountScene akgCountScene = new AKGCountScene(stage);
             akgCountScene.show();
         });

@@ -62,7 +62,7 @@ public class LoginScene {
 
         VBox root = new VBox(stackPane);
         Scene scene = new Scene(root, 750, 500);
-        scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/starting-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 

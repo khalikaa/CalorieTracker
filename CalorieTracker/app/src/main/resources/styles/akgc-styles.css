@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.tf-form {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    border-color: #720808;
+    -fx-border-color: #720808;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 15;
+    -fx-border-radius: 15;
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 200px;
+    -fx-max-width: 200px;
+    max-height: 30;
+    -fx-max-height: 30;
+    min-height: 30;
+    -fx-min-height: 30;
+}
+
+.label-form {
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+}
+
+.button-akg{
+    background-color: transparent;
+    -fx-background-color: transparent;
+    border-color: #720808;
+    -fx-border-color: #720808;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 15;
+    -fx-border-radius: 15;
+    padding: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #720808;
+    max-width: 200px;
+    -fx-max-width: 200px;
+    max-height: 50;
+    -fx-max-height: 50;
+    min-height: 30;
+    -fx-min-height: 30;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.label-tittle{
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 15px;
+    -fx-font-size: 15px;
+    max-height: 49;
+    -fx-max-height: 49;
+    max-width: 700px;
+    -fx-max-width: 700px;
+}
+
+.label-keterangan{
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 5px;
+    -fx-font-size: 5px;
+    max-width: 200px;
+    -fx-max-width: 200px;
+}
