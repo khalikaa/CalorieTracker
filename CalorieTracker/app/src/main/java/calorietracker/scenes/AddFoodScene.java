@@ -5,10 +5,9 @@ import java.util.stream.Collectors;
 
 import calorietracker.controllers.NutriInfoController;
 import calorietracker.models.NutriInfo;
-//import javafx.beans.Observable;
+import calorietracker.util.UIUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,8 +16,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -34,16 +34,37 @@ public class AddFoodScene {
     }
 
     public void show() {
+        Pane root = new Pane();
+        BackgroundImage backgroundImage = UIUtil.createBackgroundImage("/images/search_scene.png", 750, 500);
+        Background background = new Background(backgroundImage);
+        root.setBackground(background);
+        
+        Button backButton = new Button("<");
+        UIUtil.setupButtonLayout(backButton, 15, 8, 35, 35);
+        backButton.getStyleClass().add("back-button");
+        backButton.setOnAction(e -> {
+            DailyReportsScene dailyReportsScene = new DailyReportsScene(stage);
+            dailyReportsScene.show();
+        });
+
         Counter selectedFood = new Counter();
         List <NutriInfo> foodsData = NutriInfoController.getAllFood();
 
         ObservableList <NutriInfo> foods = FXCollections.observableArrayList();
         foods.addAll(foodsData);
         
+        Button saveButton = new Button("SIMPAN");
+        saveButton.getStyleClass().add("save-button");
+        UIUtil.setupButtonLayout(saveButton, 600, 0, 150, 52);
+
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Cari Makanan");
+        searchTextField.getStyleClass().add("search-tf");
+        UIUtil.setupTextFieldLayout(searchTextField, 75, 85, 500, 40);
 
         Button searchButton = new Button("Cari");
+        searchButton.getStyleClass().add("search-button");
+        UIUtil.setupButtonLayout(searchButton, 590, 85, 85,40);
         searchButton.setOnAction(e -> {
             String searchText = searchTextField.getText().toLowerCase();
             List<NutriInfo> filteredList = foodsData.stream()
@@ -52,11 +73,7 @@ public class AddFoodScene {
             foods.setAll(filteredList);
         });
 
-        HBox searchBox = new HBox(10, searchTextField, searchButton);
-
         TableView<NutriInfo> foodsTableView = new TableView<>();
-        foodsTableView.setPrefHeight(300);
-        foodsTableView.setMaxWidth(605);
 
         TableColumn<NutriInfo, String> kolomNama = new TableColumn<>("Nama Makanan");
         TableColumn<NutriInfo, String> kolomEnergi = new TableColumn<>("Energi (Kal)");
@@ -65,6 +82,11 @@ public class AddFoodScene {
         TableColumn<NutriInfo, String> kolomKarbo = new TableColumn<>("Karbo (g)");
         TableColumn<NutriInfo, String> kolomBerat = new TableColumn<>("Berat (g)");
         TableColumn<NutriInfo, String> kolomTambah = new TableColumn<>("Tambah");
+
+        foodsTableView.setPrefWidth(600);
+        foodsTableView.setPrefHeight(275);
+        foodsTableView.setLayoutX(75);
+        foodsTableView.setLayoutY(140);
 
         kolomNama.setPrefWidth(150);
         kolomEnergi.setPrefWidth(70);
@@ -81,6 +103,8 @@ public class AddFoodScene {
         kolomBerat.setCellValueFactory(new PropertyValueFactory<>("berat"));
        
         Label statusLabel = new Label();
+        statusLabel.getStyleClass().add("label-status");
+        UIUtil.setupLabelLayout(statusLabel, 300, 460, 150, 20);
 
         kolomTambah.setCellFactory(new Callback<TableColumn<NutriInfo, String>, TableCell<NutriInfo, String>>() {
             @Override
@@ -97,7 +121,7 @@ public class AddFoodScene {
                             buttonTambah.setOnAction(event -> {
                                 //NutriInfo nutriInfo = getTableView().getItems().get(getIndex());
                                 selectedFood.value++;
-                                statusLabel.setText(selectedFood.value + " item dipilih");
+                                statusLabel.setText(selectedFood.value + " Item Dipilih");
                             });
                             setGraphic(buttonTambah);
                             setText(null);
@@ -106,23 +130,13 @@ public class AddFoodScene {
                 };
             }
         });
-        
         foodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomTambah);
-
         foodsTableView.setItems(foods);
 
-        Button saveButton = new Button("Simpan");
-        saveButton.setOnAction(e -> {
-            DailyReportsScene dailyReportsScene = new DailyReportsScene(stage);
-            dailyReportsScene.show();
-        });
-
-        VBox root = new VBox(searchBox, foodsTableView, statusLabel, saveButton);
-        root.setPadding(new Insets(10));
-        root.setSpacing(10);
-        root.setPrefWidth(600);
+        root.getChildren().addAll(backButton, saveButton, foodsTableView, searchTextField, searchButton, statusLabel);
 
         Scene scene = new Scene(root, 750, 500);
+        scene.getStylesheets().add(getClass().getResource("/styles/searching-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }    

@@ -1,0 +1,73 @@
+.search-tf {
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    background-color: transparent;
+    -fx-background-color: transparent;
+    border-color: #2f5447;
+    -fx-border-color: #2f5447;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 30;
+    -fx-border-radius: 30;
+    padding: 0 15 0 15;
+    -fx-padding: 0 15 0 15;
+    -fx-prompt-text-fill: #2f5447;
+}
+
+.back-button {
+    background-color: #720808; 
+    -fx-background-color: #720808; 
+    -fx-background-radius: 100;    
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #FFB8BF; 
+    -fx-alignment: center;
+}
+
+.save-button {
+    background-color: #720808; 
+    -fx-background-color: #720808; 
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #FFB8BF; 
+    -fx-alignment: center;
+}
+
+.search-button {
+    background-color: #95ECC6; 
+    -fx-background-color: #95ECC6; 
+    border-color: #2f5447; 
+    -fx-border-color: #2f5447;  
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 50;  
+    -fx-border-radius: 50;     
+    -fx-background-radius: 50; 
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #2f5447; 
+    -fx-alignment: center;
+}
+
+.label-status {
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #2f5447; 
+    -fx-alignment: center;
+}

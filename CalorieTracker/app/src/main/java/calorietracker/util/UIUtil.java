@@ -3,6 +3,7 @@ package calorietracker.util;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -34,5 +35,12 @@ public class UIUtil {
         label.setLayoutY(y);
         label.setPrefWidth(width);
         label.setPrefHeight(height);
+    }
+
+    public static void setupTextFieldLayout(TextField textField, double x, double y, double width, double height) {
+        textField.setLayoutX(x);
+        textField.setLayoutY(y);
+        textField.setPrefWidth(width);
+        textField.setPrefHeight(height);
     }
 }
