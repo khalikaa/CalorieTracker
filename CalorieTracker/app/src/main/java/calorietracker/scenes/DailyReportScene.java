@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -64,23 +65,43 @@ public class DailyReportScene {
         selectedFoodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat);
 
         selectedFoodsTableView.setItems(foods);
+        selectedFoodsTableView.setLayoutX(75);
+        selectedFoodsTableView.setLayoutY(113);
+        selectedFoodsTableView.setPrefWidth(600);
+        selectedFoodsTableView.setPrefHeight(261);
 
-        Button buttonTambah = new Button("TAMBAH MAKANAN");
+        Button buttonTambah = new Button("+ TAMBAH MAKANAN");
         buttonTambah.getStyleClass().add("button-tambah");
+        UIUtil.setupButtonLayout(buttonTambah, 66, 392, 400, 40);
         buttonTambah.setOnAction(e -> {
             AddFoodScene addFoodScene = new AddFoodScene(stage);
             addFoodScene.show(user_id);
         });
 
-        Button buttonProfil = new Button("PROFIL SAYA");
-        buttonProfil.getStyleClass().add("button-catatan");
+        Button buttonReset = new Button("Reset");
+        buttonReset.getStyleClass().add("button-reset");
+        UIUtil.setupButtonLayout(buttonReset, 475, 392, 200, 40);
 
+        Button buttonProfil = new Button("PROFIL SAYA");
+        buttonProfil.getStyleClass().add("button-profilsaya");
+        UIUtil.setupButtonLayout(buttonProfil, 0, 450, 375, 50);
+        
         Button buttonLaporan = new Button("LAPORAN HARIAN");
         buttonLaporan.getStyleClass().add("button-laporan");
+        UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
 
-        root.getChildren().addAll(selectedFoodsTableView, buttonProfil, buttonLaporan, buttonTambah);
+        Label labelKaloriTerpenuhi = new Label("1800 dari 2000 Kalori terpenuhi");
+        labelKaloriTerpenuhi.getStyleClass().add("label-kaloriTerpenuhi");
+        UIUtil.setupLabelLayout(labelKaloriTerpenuhi, 250, 31, 325, 26);
+
+        Label labelNutrisi = new Label("Protein: 50/78g, Lemak: 30/44g , Karbohidrat: 200/325g");
+        labelNutrisi.getStyleClass().add("label-nutrisi");
+        UIUtil.setupLabelLayout(labelNutrisi, 156, 65, 438, 26);
+
+        root.getChildren().addAll(selectedFoodsTableView, buttonProfil, buttonLaporan, buttonTambah, buttonReset, labelKaloriTerpenuhi, labelNutrisi);
 
         Scene scene = new Scene(root, 750, 500);
+        scene.getStylesheets().add(getClass().getResource("/styles/report-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
