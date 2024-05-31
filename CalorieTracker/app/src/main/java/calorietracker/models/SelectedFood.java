@@ -48,7 +48,7 @@ public class SelectedFood extends Model{
         return weight;
     }
 
-    public void setFoodId() {
+    public void setFoodId(int food_id) {
         this.food_id = food_id;
     }
 

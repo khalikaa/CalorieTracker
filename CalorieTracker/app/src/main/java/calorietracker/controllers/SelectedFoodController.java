@@ -60,4 +60,16 @@ public class SelectedFoodController extends DbConfig {
             e.printStackTrace();
         }
     }
+
+    public static void deleteAllSelectedFoodsByUserId(int userId) {
+        query = "DELETE FROM selected_foods WHERE user_id = ?";
+        try {
+            getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

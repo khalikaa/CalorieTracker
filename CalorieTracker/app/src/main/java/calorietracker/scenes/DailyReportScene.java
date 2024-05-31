@@ -119,6 +119,11 @@ public class DailyReportScene {
         Button buttonReset = new Button("RESET");
         buttonReset.getStyleClass().add("button-reset");
         UIUtil.setupButtonLayout(buttonReset, 475, 392, 200, 40);
+        buttonReset.setOnAction(e -> {
+            SelectedFoodController.deleteAllSelectedFoodsByUserId(user_id);
+            foods.clear();
+            updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
+        });
 
         Button buttonProfil = new Button("PROFIL SAYA");
         buttonProfil.getStyleClass().add("button-profilsaya");
