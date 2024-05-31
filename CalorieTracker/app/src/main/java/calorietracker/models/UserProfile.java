@@ -1,24 +1,25 @@
 package calorietracker.models;
 
 public class UserProfile extends Model {
-    int user_id, height, weight, age, calorie_needs;
+    int user_id, height, weight, age, calorieNeeds;
     double proteinNeeds, fatNeeds, carboNeeds;
-    String gender, activityLevel, dateCreated;
+    String gender, activityLevel;
+
+    public UserProfile() {}
     
-    public UserProfile(int id, int user_id, int height, int weight, int age, int calorie_needs, double proteinNeeds,
-            double fatNeeds, double carboNeeds, String gender, String activityLevel, String dateCreated) {
+    public UserProfile(int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
+            double fatNeeds, double carboNeeds, String gender, String activityLevel) {
         super(id);
         this.user_id = user_id;
         this.height = height;
         this.weight = weight;
         this.age = age;
-        this.calorie_needs = calorie_needs;
+        this.calorieNeeds = calorieNeeds;
         this.proteinNeeds = proteinNeeds;
         this.fatNeeds = fatNeeds;
         this.carboNeeds = carboNeeds;
         this.gender = gender;
         this.activityLevel = activityLevel;
-        this.dateCreated = dateCreated;
     }
 
     public int getUser_id() {
@@ -53,12 +54,12 @@ public class UserProfile extends Model {
         this.age = age;
     }
 
-    public int getCalorie_needs() {
-        return calorie_needs;
+    public int getCalorieNeeds() {
+        return calorieNeeds;
     }
 
-    public void setCalorie_needs(int calorie_needs) {
-        this.calorie_needs = calorie_needs;
+    public void setCalorieNeeds(int calorieNeeds) {
+        this.calorieNeeds = calorieNeeds;
     }
 
     public double getProteinNeeds() {
@@ -99,13 +100,5 @@ public class UserProfile extends Model {
 
     public void setActivityLevel(String activityLevel) {
         this.activityLevel = activityLevel;
-    }    
-
-    public String getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
     }    
 }
