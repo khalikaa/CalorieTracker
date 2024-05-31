@@ -21,4 +21,20 @@ public class DbConfig {
             e.printStackTrace();
         }
     }
+
+    protected static void closeResources() {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
