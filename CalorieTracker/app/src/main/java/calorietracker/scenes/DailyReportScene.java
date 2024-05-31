@@ -123,6 +123,7 @@ public class DailyReportScene {
             SelectedFoodController.deleteAllSelectedFoodsByUserId(user_id);
             foods.clear();
             updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
+            labelStatus.setText("");
         });
 
         Button buttonProfil = new Button("PROFIL SAYA");
