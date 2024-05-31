@@ -26,7 +26,25 @@ public class UsersController extends DbConfig {
         return null;
     }
 
+    private static boolean isUsernameTaken(String username) {
+        query = "SELECT * FROM users WHERE username = ?";
+        try {
+            getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return false;
+        }
+
     public static boolean register(String username, String password) {
+        if (isUsernameTaken(username)) {
+            return false;
+        }
         query = "INSERT INTO users (username, password) VALUES (?, ?)";
         try {
             getConnection();
@@ -39,5 +57,22 @@ public class UsersController extends DbConfig {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static int getUserIdByUsername(String username) {
+        try {
+            String query = "SELECT id FROM users WHERE username = (?)";
+            getConnection(); 
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(resultSet.getInt("id"));
+            return resultSet.getInt("id");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConfig.closeResources();
+        }
+        return -1; 
     }
 }
