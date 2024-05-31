@@ -5,7 +5,6 @@ import calorietracker.controllers.UsersController;
 import calorietracker.models.UserProfile;
 import calorietracker.util.SessionUtil;
 import calorietracker.util.UIUtil;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -15,7 +14,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class AKGCountScene {

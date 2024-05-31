@@ -3,11 +3,8 @@
 .button-profilsaya{
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
-    /* border-color: #720808;
-    -fx-border-color: #720808; */
     border-width: 2px;
     -fx-border-width: 2px;
-    /* -fx-border-radius: 15; */
     padding: 5;
     -fx-padding: 5;
     -fx-prompt-text-fill: #75493A;
@@ -24,16 +21,13 @@
     -fx-font-size: 15px;
     font-weight: bold;
     -fx-font-weight: bold;
-
 }
+
 .button-laporan{
     background-color: #FDCCD1;
     -fx-background-color: #FDCCD1;
-    /* border-color: #720808;
-    -fx-border-color: #720808; */
     border-width: 2px;
     -fx-border-width: 2px;
-    /* -fx-border-radius: 15; */
     padding: 5;
     -fx-padding: 5;
     -fx-prompt-text-fill: #75493A;
@@ -50,8 +44,8 @@
     -fx-font-size: 15px;
     font-weight: bold;
     -fx-font-weight: bold;
-
 }
+
 .button-tambah{
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
@@ -62,23 +56,14 @@
     border-radius: 25;
     -fx-border-radius: 25;
     -fx-background-radius: 20;
-    padding: 5;
-    -fx-padding: 5;
     -fx-prompt-text-fill: #720808;
-    max-width: 400px;
-    -fx-max-width: 400px;
-    max-height: 40;
-    -fx-max-height: 40;
-    min-height: 40;
-    -fx-min-height: 40;
-    -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
+    -fx-text-fill: #720808;
     font-size: 12px;
     -fx-font-size: 12px;
     font-weight: bold;
     -fx-font-weight: bold;
-
 }
 
 .button-reset{
@@ -91,26 +76,28 @@
     border-radius: 25;
     -fx-border-radius: 25;
     -fx-background-radius: 20;
-    padding: 5;
-    -fx-padding: 5;
     -fx-prompt-text-fill: #720808;
-    max-width: 200px;
-    -fx-max-width: 200px;
-    max-height: 40;
-    -fx-max-height: 40;
-    min-height: 40;
-    -fx-min-height: 40;
-    -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-size: 12px;
     -fx-font-size: 12px;
+    -fx-text-fill: #720808;
     font-weight: bold;
     -fx-font-weight: bold;
-
 }
 
-.label-kaloriTerpenuhi{
+.label-kalori{
+    -fx-text-fill: #3B6959;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 20px;
+    -fx-font-size: 20px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.label-nutrisi{
     -fx-text-fill: #3B6959;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
@@ -118,14 +105,14 @@
     -fx-font-size: 15px;
     font-weight: bold;
     -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
-.label-nutrisi{
-    -fx-text-fill: #3B6959;
+.label-status{
+    -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 11px;
-    -fx-font-size: 11px;
-    font-weight: bold;
-    -fx-font-weight: bold;
+    font-size: 12px;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
 }

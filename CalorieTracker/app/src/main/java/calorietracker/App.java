@@ -1,6 +1,5 @@
 package calorietracker;
 
-import calorietracker.scenes.AKGCountScene;
 import calorietracker.scenes.LoginScene;
 import calorietracker.scenes.SplashScreen;
 import javafx.application.Application;

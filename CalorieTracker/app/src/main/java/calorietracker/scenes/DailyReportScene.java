@@ -1,7 +1,9 @@
 package calorietracker.scenes;
 
 import calorietracker.controllers.SelectedFoodController;
+import calorietracker.controllers.UserProfileController;
 import calorietracker.models.SelectedFood;
+import calorietracker.models.UserProfile;
 import calorietracker.util.UIUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +31,8 @@ public class DailyReportScene {
         BackgroundImage backgroundImage = UIUtil.createBackgroundImage("/images/report_scene.png", 750, 500);
         Background background = new Background(backgroundImage);
         root.setBackground(background);
+
+        UserProfile userProfile = UserProfileController.getProfileByUserId(user_id);
 
         List<SelectedFood> selectedFoods = SelectedFoodController.getSelectedFoods(user_id);
         
@@ -78,7 +82,7 @@ public class DailyReportScene {
             addFoodScene.show(user_id);
         });
 
-        Button buttonReset = new Button("Reset");
+        Button buttonReset = new Button("RESET");
         buttonReset.getStyleClass().add("button-reset");
         UIUtil.setupButtonLayout(buttonReset, 475, 392, 200, 40);
 
@@ -90,19 +94,44 @@ public class DailyReportScene {
         buttonLaporan.getStyleClass().add("button-laporan");
         UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
 
-        Label labelKaloriTerpenuhi = new Label("1800 dari 2000 Kalori terpenuhi");
-        labelKaloriTerpenuhi.getStyleClass().add("label-kaloriTerpenuhi");
-        UIUtil.setupLabelLayout(labelKaloriTerpenuhi, 250, 31, 325, 26);
+        Label labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
+        labelKalori.getStyleClass().add("label-kalori");
+        UIUtil.setupLabelLayout(labelKalori, 205, 30, 325, 26);
 
-        Label labelNutrisi = new Label("Protein: 50/78g, Lemak: 30/44g , Karbohidrat: 200/325g");
+        Label labelNutrisi = new Label("Protein: 0/78g, Lemak: 0/44g , Karbohidrat: 0/325g");
         labelNutrisi.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNutrisi, 156, 65, 438, 26);
+        UIUtil.setupLabelLayout(labelNutrisi, 70, 60, 600, 26);
 
-        root.getChildren().addAll(selectedFoodsTableView, buttonProfil, buttonLaporan, buttonTambah, buttonReset, labelKaloriTerpenuhi, labelNutrisi);
+        Label labelStatus = new Label();
+        labelStatus.getStyleClass().add("label-status");
+        UIUtil.setupLabelLayout(labelStatus, 200, 83, 300, 26);
+
+        updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
+
+        root.getChildren().addAll(selectedFoodsTableView, buttonProfil, buttonLaporan,
+        buttonTambah, buttonReset, labelKalori, labelNutrisi, labelStatus);
 
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/report-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void updateTotalLabels(Label labelKalori, Label labelNutrisi, Label labelStatus, ObservableList<SelectedFood> data, UserProfile userProfile) {
+        int totalKalori = data.stream().mapToInt(SelectedFood::getEnergy).sum();
+        double totalProtein = data.stream().mapToDouble(SelectedFood::getProtein).sum();
+        double totalFat = data.stream().mapToDouble(SelectedFood::getFat).sum();
+        double totalCarb = data.stream().mapToDouble(SelectedFood::getCarbohydrate).sum();
+
+        if (totalKalori > userProfile.getCalorieNeeds()) {
+            labelStatus.setText("Asupan kalori melebihi batas!");
+        } 
+
+        String proteinNeeds = "Protein: " + totalProtein + "/" + String.format("%.2f", userProfile.getProteinNeeds()) + "g, ";
+        String fatNeeds = "Lemak: " + totalFat + "/" + String.format("%.2f", userProfile.getFatNeeds()) + "g, "; 
+        String carbNeeds = "Karbohidrat: " + totalCarb + "/" + String.format("%.2f", userProfile.getCarboNeeds()) + "g";
+
+        labelKalori.setText(totalKalori + " dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
+        labelNutrisi.setText(proteinNeeds + fatNeeds + carbNeeds);
     }
 }
