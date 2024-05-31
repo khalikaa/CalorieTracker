@@ -115,7 +115,8 @@ public class AddFoodScene {
                                 selectedFood.getProtein(),
                                 selectedFood.getLemak(),
                                 selectedFood.getKarbohidrat(),
-                                selectedFood.getBerat());
+                                selectedFood.getBerat(),
+                                selectedFood.getId());
                                 SelectedFoodController.addSelectedFood(user_id, food);
                                 value++;
                                 statusLabel.setText(value + " item dipilih");

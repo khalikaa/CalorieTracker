@@ -39,7 +39,8 @@ public class SelectedFoodController extends DbConfig {
                 double fat = resultSet.getDouble("fat");
                 double carbo =  resultSet.getDouble("carbohydrate");
                 double weight = resultSet.getDouble("weight");
-                SelectedFood selectedFood = new SelectedFood(userId, name, energy, protein, fat, carbo, weight);
+                int food_id = resultSet.getInt("food_id");
+                SelectedFood selectedFood = new SelectedFood(userId, name, energy, protein, fat, carbo, weight, food_id);
                 selectedFoods.add(selectedFood);
             }
         } catch (Exception e) {
@@ -48,12 +49,12 @@ public class SelectedFoodController extends DbConfig {
         return selectedFoods;
     }
 
-    public static void clearSelectedFoods(int userId) {
-        query = "DELETE FROM selected_foods WHERE user_id = ?";
+    public static void deleteSelectedFood(int foodId) {
+        query = "DELETE FROM selected_foods WHERE food_id = ?";
         try {
             getConnection();
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, foodId);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

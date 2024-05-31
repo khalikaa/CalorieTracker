@@ -1,7 +1,7 @@
 package calorietracker.models;
 
 public class SelectedFood extends Model{
-    private int user_id;
+    private int user_id, food_id;
     private String name;
     private int energy;
     private double protein;
@@ -9,7 +9,7 @@ public class SelectedFood extends Model{
     private double carbohydrate;
     private double weight;
 
-    public SelectedFood(int user_id, String name, int energy, double protein, double fat, double carbohydrate, double weight) {
+    public SelectedFood(int user_id, String name, int energy, double protein, double fat, double carbohydrate, double weight, int food_id) {
         this.user_id = user_id;
         this.name = name;
         this.energy = energy;
@@ -17,10 +17,15 @@ public class SelectedFood extends Model{
         this.fat = fat;
         this.carbohydrate = carbohydrate;
         this.weight = weight;
+        this.food_id = food_id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getFoodId() {
+        return food_id;
     }
 
     public int getEnergy() {
@@ -43,7 +48,10 @@ public class SelectedFood extends Model{
         return weight;
     }
 
-    // Setters
+    public void setFoodId() {
+        this.food_id = food_id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

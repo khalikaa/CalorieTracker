@@ -88,6 +88,7 @@ public class DailyReportScene {
                         } else {
                             buttonHapus.setOnAction(event -> {
                                 SelectedFood selectedFood = getTableView().getItems().get(getIndex());
+                                SelectedFoodController.deleteSelectedFood(selectedFood.getId());
                                 foods.remove(selectedFood);
                                 updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
                             });
@@ -98,6 +99,7 @@ public class DailyReportScene {
                 };
             }
         });
+
         selectedFoodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomHapus);
 
         selectedFoodsTableView.setItems(foods);
