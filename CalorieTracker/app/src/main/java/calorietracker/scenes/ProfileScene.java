@@ -21,6 +21,10 @@ public class ProfileScene {
         this.userProfile = userProfile;
     }
 
+    public ProfileScene(Stage stage) {
+        this.stage = stage;
+    }
+
     public void show(int id) {
         this.userProfile = UserProfileController.getProfileByUserId(id);
 
@@ -30,28 +34,58 @@ public class ProfileScene {
         root.setBackground(background);
         
         Label labelTitle = new Label("Angka Kecukupan Gizi Saya");
-        UIUtil.setupLabelLayout(labelTitle, 240, 25, 268, 21);
-
-        Label labelAKG = new Label("AKG Saat Ini:\t\t\t" + userProfile.getCalorieNeeds());
-        Label labelNama = new Label("Nama:\t\t\t\t" + userProfile.getName());
-        Label labelUsia = new Label("Usia:\t\t\t\t\t" + userProfile.getAge());
-        Label labelBB = new Label("Berat Badan:\t\t\t" + userProfile.getHeight());
-        Label labelTB = new Label("Tinggi Badan:\t\t\t" + userProfile.getWeight());
-        Label labelJK = new Label("Jenis Kelamin:\t\t\t" + userProfile.getGender());
-        Label labelTA = new Label("Tingkat Aktivitas:\t\t" + userProfile.getActivityLevel());
-        Label labelProtein = new Label("Kebutuhan Protein:\t\t" + String.format("%.2f", userProfile.getProteinNeeds()) + " g");
-        Label labelLemak = new Label("Kebutuhan Lemak:\t\t" + String.format("%.2f", userProfile.getFatNeeds()) + " g");
-        Label labelKarbo = new Label("Kebutuhan Karbohidrat:\t" + String.format("%.2f", userProfile.getCarboNeeds()) + " g");
-
-        Button hitungUlangButton = new Button("Hitung Ulang AKG");
-        UIUtil.setupButtonLayout(hitungUlangButton, 212, 335, 325, 25);
+        labelTitle.getStyleClass().add("label-title");
+        UIUtil.setupLabelLayout(labelTitle, 240, 25, 270, 25);
         
-        Button signOutButton = new Button("Sign Out");
-        UIUtil.setupButtonLayout(signOutButton, 275, 400, 200, 30);
+        Label labelAKG = new Label("AKG Saat Ini:\t\t\t\t" + userProfile.getCalorieNeeds());
+        labelAKG.getStyleClass().add("label-form");
+
+        Label labelNama = new Label("Nama:\t\t\t\t\t" + userProfile.getName());
+        labelNama.getStyleClass().add("label-form");
+        
+        Label labelUsia = new Label("Usia:\t\t\t\t\t" + userProfile.getAge());
+        labelUsia.getStyleClass().add("label-form");
+
+        Label labelBB = new Label("Berat Badan:\t\t\t\t" + userProfile.getHeight() + "cm");
+        labelBB.getStyleClass().add("label-form");
+
+        Label labelTB = new Label("Tinggi Badan:\t\t\t" + userProfile.getWeight() + "kg");
+        labelTB.getStyleClass().add("label-form");
+
+        Label labelJK = new Label("Jenis Kelamin:\t\t\t" + userProfile.getGender());
+        labelJK.getStyleClass().add("label-form");
+
+        Label labelTA = new Label("Tingkat Aktivitas:\t\t\t" + userProfile.getActivityLevel());
+        labelTA.getStyleClass().add("label-form");
+
+        Label labelProtein = new Label("Kebutuhan Protein:\t\t" + String.format("%.2f", userProfile.getProteinNeeds()) + " g");
+        labelProtein.getStyleClass().add("label-form");
+
+        Label labelLemak = new Label("Kebutuhan Lemak:\t\t" + String.format("%.2f", userProfile.getFatNeeds()) + " g");
+        labelLemak.getStyleClass().add("label-form");
+
+        Label labelKarbo = new Label("Kebutuhan Karbohidrat:\t" + String.format("%.2f", userProfile.getCarboNeeds()) + " g");
+        labelKarbo.getStyleClass().add("label-form");
+
+        Button buttonHitungUlang = new Button("Hitung Ulang AKG");
+        buttonHitungUlang.getStyleClass().add("button-hitung-ulang");
+        UIUtil.setupButtonLayout(buttonHitungUlang, 212, 335, 325, 25);
+        
+        Button buttonSingOut = new Button("SIGN OUT");
+        buttonSingOut.getStyleClass().add("button-sign-out");
+        UIUtil.setupButtonLayout(buttonSingOut, 275, 395, 200, 40);
+        buttonSingOut.setOnAction(e-> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
+        });
+
+        Button buttonProfilSaya = new Button("PROFIL SAYA");
+        buttonProfilSaya.getStyleClass().add("button-profil");
+        UIUtil.setupButtonLayout(buttonProfilSaya, 0, 450, 375, 50);
 
         Button buttonLaporan = new Button("LAPORAN HARIAN");
         buttonLaporan.getStyleClass().add("button-laporan");
-        UIUtil.setupButtonLayout(buttonLaporan, 500, 400, 200, 30);
+        UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
         buttonLaporan.setOnAction(e -> {
             DailyReportScene dailyReportScene = new DailyReportScene(stage);
             dailyReportScene.show(id);
@@ -60,8 +94,9 @@ public class ProfileScene {
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);
         UIUtil.setupVBoxLayout(vBoxProfil, 223, 90, 304, 233);
         
-        root.getChildren().addAll(labelTitle, vBoxProfil, hitungUlangButton, signOutButton, buttonLaporan);
+        root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, buttonProfilSaya, buttonLaporan);
         Scene scene = new Scene(root, 750, 500);
+        scene.getStylesheets().add(getClass().getResource("/styles/profile-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

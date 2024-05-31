@@ -31,7 +31,7 @@ public class AKGCountScene {
 
         Label labeltittle = new Label("Hitung Angka Kecukupan Gizi\n(AKG) Anda:");
         labeltittle.getStyleClass().add("label-tittle");
-        UIUtil.setupLabelLayout(labeltittle, 50, 50, 265, 45);
+        UIUtil.setupLabelLayout(labeltittle, 50, 30, 265, 45);
 
         Label labelNama = new Label("Nama:");
         labelNama.getStyleClass().add("label-form");
@@ -87,40 +87,40 @@ public class AKGCountScene {
         gridPane.add(boxGender, 0, 5);
         gridPane.add(labelAktivitas, 1, 4);
         gridPane.add(boxAktivitas, 1, 5);
-        UIUtil.setupGridPaneLayout(gridPane, 50, 105, 360, 175);
+        UIUtil.setupGridPaneLayout(gridPane, 50, 85, 360, 175);
 
         Button buttonHitungAKG = new Button("Hitung AKG");
         buttonHitungAKG.getStyleClass().add("button-akg");
-        UIUtil.setupButtonLayout(buttonHitungAKG, 130, 305, 200, 10);
+        UIUtil.setupButtonLayout(buttonHitungAKG, 130, 285, 200, 10);
 
         Label labelHasil = new Label();
         labelHasil.getStyleClass().add("label-ket-akg");
-        UIUtil.setupLabelLayout(labelHasil, 68, 340, 325, 26);
+        UIUtil.setupLabelLayout(labelHasil, 68, 320, 325, 26);
 
         Label hasilHitungAKG = new Label();
         hasilHitungAKG.getStyleClass().add("label-hasil-akg");
-        UIUtil.setupLabelLayout(hasilHitungAKG, 138, 365, 184, 26);
+        UIUtil.setupLabelLayout(hasilHitungAKG, 138, 345, 184, 26);
 
         Label labelNut1 = new Label();
         labelNut1.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNut1, 60, 390, 350, 20);
+        UIUtil.setupLabelLayout(labelNut1, 57, 370, 347, 20);
 
         Label labelNut2 = new Label();
         labelNut2.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNut2, 90, 405, 260, 20);
+        UIUtil.setupLabelLayout(labelNut2, 100, 385, 263, 20);
 
         Button buttonSimpan = new Button("Simpan Hasil AKG");
         buttonSimpan.getStyleClass().add("button-simpan");
-        UIUtil.setupButtonLayout(buttonSimpan, 130, 430, 200, 25);
+        UIUtil.setupButtonLayout(buttonSimpan, 130, 410, 200, 25);
         buttonSimpan.setVisible(false);
 
         Label labelHead1 = new Label("Apa Itu AKG?");
         labelHead1.getStyleClass().add("label-header");
-        UIUtil.setupLabelLayout(labelHead1, 490, 50, 135, 17);
+        UIUtil.setupLabelLayout(labelHead1, 490,30, 135, 17);
         
         Label labelKet1 = new Label("Angka Kebutuhan Gizi (AKG) adalah\npanduan jumlah     nutrisi harian yang\ndiperlukan untuk menjaga kesehatan\ndan mencegah penyakit, yang diukur\ndalam satuan kalori. Penyusun utama\nkalori ini adalah makronutrien seperti\n karbohidrat, protein, dan lemak.\nKebutuhan ini bervariasi berdasarkan\nusia, jenis kelamin, berat badan, tinggi\nbadan, dan tingkat aktivitas fisik.");
         labelKet1.getStyleClass().add("label-pengertian");
-        UIUtil.setupLabelLayout(labelKet1, 490, 70, 230, 170);
+        UIUtil.setupLabelLayout(labelKet1, 490, 50, 230, 170);
 
         Label labelHead2 = new Label("*Tingkat aktivitas yang harus dipilih\n berdasarkan kegiatan sehari-hari:");
         labelHead2.getStyleClass().add("label-header");

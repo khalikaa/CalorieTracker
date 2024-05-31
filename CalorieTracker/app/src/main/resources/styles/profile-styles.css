@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.button-laporan {
+    background-color: #FFB8BF;
+    -fx-background-color: #FFB8BF;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    -fx-prompt-text-fill: #75493A;
+    -fx-text-fill: #75493A;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.button-profil {
+    background-color: #FDCCD1;
+    -fx-background-color: #FDCCD1;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    -fx-prompt-text-fill: #75493A;
+    -fx-text-fill:#75493A;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.button-sign-out {
+    background-color: #FFB8BF;
+    -fx-background-color: #FFB8BF;
+    border-color: #720808;
+    -fx-border-color: #720808;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 25;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-prompt-text-fill: #720808;
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.button-hitung-ulang {
+    background-color: #95ECC6;
+    -fx-background-color: #95ECC6;
+    border-color: #3B6959;
+    -fx-border-color: #3B6959;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 25;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-text-fill: #3B6959;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 12px;
+    -fx-font-size: 12px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.label-form {
+    -fx-text-fill: #3B6959;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 15px;
+    -fx-font-size: 15px;
+    font-weight: 600;
+    -fx-font-weight: 600;
+}
+
+.label-title {
+    -fx-text-fill: #3B6959;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 20px;
+    -fx-font-size: 20px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
