@@ -33,7 +33,7 @@ public class ProfileScene {
         UIUtil.setupLabelLayout(labelTitle, 240, 25, 268, 21);
 
         Label labelAKG = new Label("AKG Saat Ini:\t\t\t" + userProfile.getCalorieNeeds());
-        Label labelNama = new Label("Nama:\t\t\t\t\t" + userProfile.getName());
+        Label labelNama = new Label("Nama:\t\t\t\t" + userProfile.getName());
         Label labelUsia = new Label("Usia:\t\t\t\t\t" + userProfile.getAge());
         Label labelBB = new Label("Berat Badan:\t\t\t" + userProfile.getHeight());
         Label labelTB = new Label("Tinggi Badan:\t\t\t" + userProfile.getWeight());
