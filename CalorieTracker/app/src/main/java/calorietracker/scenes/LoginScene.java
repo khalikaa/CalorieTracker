@@ -80,7 +80,7 @@ public class LoginScene {
             if (user != null) {
                 DailyReportsScene dailyReportsScene = new DailyReportsScene(stage);
                 dailyReportsScene.show();
-            } else { //misalnya akun tdk ditemukan
+            } else { 
                 labelStatus.setText("Email atau password salah!");
             }
         });

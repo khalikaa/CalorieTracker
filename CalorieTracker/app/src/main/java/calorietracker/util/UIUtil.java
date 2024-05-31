@@ -9,6 +9,8 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class UIUtil {
     public static BackgroundImage createBackgroundImage(String imagePath, double width, double height) {
@@ -42,5 +44,19 @@ public class UIUtil {
         textField.setLayoutY(y);
         textField.setPrefWidth(width);
         textField.setPrefHeight(height);
+    }
+
+    public static void setupVBoxLayout(VBox vb, double x, double y, double width, double height) {
+        vb.setLayoutX(x);
+        vb.setLayoutY(y);
+        vb.setPrefWidth(width);
+        vb.setPrefHeight(height);
+    }
+
+    public static void setupGridPaneLayout(GridPane gridPane, double x, double y, double width, double height) {
+        gridPane.setLayoutX(x);
+        gridPane.setLayoutY(y);
+        gridPane.setPrefWidth(width);
+        gridPane.setPrefHeight(height);
     }
 }

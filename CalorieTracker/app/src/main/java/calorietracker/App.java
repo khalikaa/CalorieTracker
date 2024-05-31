@@ -1,5 +1,6 @@
 package calorietracker;
 
+import calorietracker.scenes.AKGCountScene;
 import calorietracker.scenes.LoginScene;
 import calorietracker.scenes.SplashScreen;
 import javafx.application.Application;
@@ -18,6 +19,7 @@ public class App extends Application {
         
         Image imageIcon = new Image(getClass().getResourceAsStream("/images/logo_calorietracker.png"));
         stage.getIcons().add(imageIcon);
+
         SplashScreen splashScreen = new SplashScreen(stage);
         splashScreen.show();
 
@@ -35,7 +37,7 @@ public class App extends Application {
                 Scene scene = new Scene(root, 750, 500);
                 stage.setScene(scene);
                 stage.show();
-
+                
                 LoginScene loginScene = new LoginScene(stage);
                 loginScene.show();
             });

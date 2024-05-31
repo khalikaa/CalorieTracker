@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 .tf-form {
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
     background-color: transparent;
     -fx-background-color: transparent;
     border-color: #3B6959;
@@ -11,7 +13,6 @@
     -fx-border-radius: 50;
     padding: 5;
     -fx-padding: 5;
-    -fx-prompt-text-fill: #720808;
     max-width: 160px;
     -fx-max-width: 160px;
     max-height: 30;
@@ -38,21 +39,18 @@
     border-radius: 10;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
-    padding: 5;
-    -fx-padding: 5;
-    -fx-prompt-text-fill: #3B6959;
     -fx-text-fill: #3B6959;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 15px;
-    -fx-font-size: 15px;
+    font-size: 13px;
+    -fx-font-size: 13px;
     font-weight: bold;
     -fx-font-weight: bold;
 }
 
 .label-tittle{
     -fx-text-fill: #3B6959;
-    font-family: 'Pop808pins';
+    font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-weight: bold;
     -fx-font-weight: bold;
@@ -74,53 +72,43 @@
     -fx-max-width: 200px;
 }
 
-.label-hasil{
+.label-hasil-akg{
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 17px;
+    -fx-font-size: 17px;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.label-ket-akg{
     -fx-text-fill: #3B6959;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 15px;
-    -fx-font-size: 15px;
+    font-size: 13px;
+    -fx-font-size: 13px;
     font-weight: bold;
     -fx-font-weight: bold;
-
+    -fx-alignment: center;
 }
 
-.label-butuh{
+.label-kebutuhan{
     -fx-text-fill: #3B6959;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-size: 11px;
     -fx-font-size: 11px;
-    font-weight: bold;
-    -fx-font-weight: bold;
-
+    -fx-alignment: center;
 }
 
-.label-hasilhitungakg{
+.label-header{
     -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 20px;
-    -fx-font-size: 20px;
-    font-weight: bold;
-    -fx-font-weight: bold;
-}
-.label-apaitu{
-    -fx-text-fill: #720808;
-    font-family: 'Poppins';
-    -fx-font-family: 'Poppins';
-    font-size: 15px;
-    -fx-font-size: 15px;
-    font-weight: bold;
-    -fx-font-weight: bold;
-}
-
-.label-TA{
-    -fx-text-fill: #720808;
-    font-family: 'Poppins';
-    -fx-font-family: 'Poppins';
-    font-size: 12px;
-    -fx-font-size: 12px;
+    font-size: 11px;
+    -fx-font-size: 11px;
     font-weight: bold;
     -fx-font-weight: bold;
 }
@@ -133,7 +121,7 @@
     -fx-font-size: 10px;
 }
 
-.button-hasilakg{
+.button-simpan{
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
     border-color: #720808;
@@ -143,14 +131,12 @@
     border-radius: 10;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
-    padding: 5;
-    -fx-padding: 5;
     -fx-prompt-text-fill: #720808;
     -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 15px;
-    -fx-font-size: 15px;
+    font-size: 13px;
+    -fx-font-size: 13px;
     font-weight: bold;
     -fx-font-weight: bold;
 }

@@ -3,11 +3,11 @@ package calorietracker.models;
 public class UserProfile extends Model {
     int user_id, height, weight, age, calorieNeeds;
     double proteinNeeds, fatNeeds, carboNeeds;
-    String gender, activityLevel;
+    String name, gender, activityLevel;
 
     public UserProfile() {}
     
-    public UserProfile(int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
+    public UserProfile(String name, int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
             double fatNeeds, double carboNeeds, String gender, String activityLevel) {
         super(id);
         this.user_id = user_id;
@@ -28,6 +28,14 @@ public class UserProfile extends Model {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getHeight() {
