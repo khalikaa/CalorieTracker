@@ -5,6 +5,7 @@ import calorietracker.controllers.UsersController;
 import calorietracker.models.UserProfile;
 import calorietracker.util.SessionUtil;
 import calorietracker.util.UIUtil;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -14,6 +15,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class AKGCountScene {
@@ -99,11 +101,15 @@ public class AKGCountScene {
 
         Label hasilHitungAKG = new Label();
         hasilHitungAKG.getStyleClass().add("label-hasil-akg");
-        UIUtil.setupLabelLayout(hasilHitungAKG, 138, 360, 184, 26);
+        UIUtil.setupLabelLayout(hasilHitungAKG, 138, 365, 184, 26);
 
-        Label labelKebutuhan = new Label();
-        labelKebutuhan.getStyleClass().add("label-kebutuhan");
-        UIUtil.setupLabelLayout(labelKebutuhan, 79, 385, 320, 40);
+        Label labelNut1 = new Label();
+        labelNut1.getStyleClass().add("label-nutrisi");
+        UIUtil.setupLabelLayout(labelNut1, 60, 390, 350, 20);
+
+        Label labelNut2 = new Label();
+        labelNut2.getStyleClass().add("label-nutrisi");
+        UIUtil.setupLabelLayout(labelNut2, 90, 405, 260, 20);
 
         Button buttonSimpan = new Button("Simpan Hasil AKG");
         buttonSimpan.getStyleClass().add("button-simpan");
@@ -167,13 +173,14 @@ public class AKGCountScene {
                 double karbo = (65.0 / 100 * akg) / 4;
         
                 String sprotein = String.format("%.2f", protein) + "g Protein, ";
-                String slemak = String.format("%.2f", lemak) + "g Lemak, dan ";
+                String slemak = String.format("%.2f", lemak) + "g Lemak,";
                 String skarbo = String.format("%.2f", karbo) + "g Karbohidrat";
         
                 int hasilAKG = (int) akg;
                 labelHasil.setText("Angka Kecukupan Gizi Anda adalah:");
                 hasilHitungAKG.setText(hasilAKG + " Kalori");
-                labelKebutuhan.setText("Anda membutuhkan sekitar " + sprotein + slemak + "\n dan " + skarbo);
+                labelNut1.setText("Anda membutuhkan sekitar " + sprotein + slemak);
+                labelNut2.setText("dan " + skarbo);
                 buttonSimpan.setVisible(true);
                 userProfile.setName(textFieldNama.getText());
                 userProfile.setHeight(tb);
@@ -223,7 +230,8 @@ public class AKGCountScene {
             }
         });
 
-        root.getChildren().addAll(labeltittle, gridPane, buttonHitungAKG, labelHasil, hasilHitungAKG, labelKebutuhan, buttonSimpan, labelHead1, labelKet1, labelHead2, labelKet2);
+        root.getChildren().addAll(labeltittle, gridPane, buttonHitungAKG, labelHasil, hasilHitungAKG,
+        labelNut1, labelNut2, buttonSimpan, labelHead1, labelKet1, labelHead2, labelKet2);
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/akgc-styles.css").toExternalForm());
         stage.setScene(scene);
