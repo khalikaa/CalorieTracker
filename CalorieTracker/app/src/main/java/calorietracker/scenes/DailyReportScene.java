@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,10 +18,15 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+
 import java.util.List;
 
 public class DailyReportScene {
     private Stage stage;
+    private Label labelKalori;
+    private Label labelNutrisi;
+    private Label labelStatus;
     
     public DailyReportScene(Stage stage) {
         this.stage = stage;
@@ -51,6 +57,7 @@ public class DailyReportScene {
         TableColumn<SelectedFood, String> kolomLemak = new TableColumn<>("Lemak (g)");
         TableColumn<SelectedFood, String> kolomKarbo = new TableColumn<>("Karbo (g)");
         TableColumn<SelectedFood, String> kolomBerat = new TableColumn<>("Berat (g)");
+        TableColumn<SelectedFood, String> kolomHapus = new TableColumn<>("Hapus");
 
         kolomNama.setPrefWidth(150);
         kolomEnergi.setPrefWidth(70);
@@ -58,6 +65,7 @@ public class DailyReportScene {
         kolomLemak.setPrefWidth(70);
         kolomKarbo.setPrefWidth(70);
         kolomBerat.setPrefWidth(70);
+        kolomHapus.setPrefWidth(70);
 
         kolomNama.setCellValueFactory(new PropertyValueFactory<>("name"));
         kolomEnergi.setCellValueFactory(new PropertyValueFactory<>("energy"));
@@ -65,8 +73,32 @@ public class DailyReportScene {
         kolomLemak.setCellValueFactory(new PropertyValueFactory<>("fat"));
         kolomKarbo.setCellValueFactory(new PropertyValueFactory<>("carbohydrate"));
         kolomBerat.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        kolomHapus.setCellFactory(new Callback<TableColumn<SelectedFood, String>, TableCell<SelectedFood, String>>() {
+            @Override
+            public TableCell<SelectedFood, String> call(TableColumn<SelectedFood, String> param) {
+                return new TableCell<SelectedFood, String>() {
+                    Button buttonHapus = new Button("Hapus");
 
-        selectedFoodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat);
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                            setText(null);
+                        } else {
+                            buttonHapus.setOnAction(event -> {
+                                SelectedFood selectedFood = getTableView().getItems().get(getIndex());
+                                foods.remove(selectedFood);
+                                updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
+                            });
+                            setGraphic(buttonHapus);
+                            setText(null);
+                        }
+                    }
+                };
+            }
+        });
+        selectedFoodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomHapus);
 
         selectedFoodsTableView.setItems(foods);
         selectedFoodsTableView.setLayoutX(75);
@@ -94,17 +126,17 @@ public class DailyReportScene {
         buttonLaporan.getStyleClass().add("button-laporan");
         UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
 
-        Label labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
+        labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
         labelKalori.getStyleClass().add("label-kalori");
         UIUtil.setupLabelLayout(labelKalori, 205, 30, 325, 26);
 
-        Label labelNutrisi = new Label("Protein: 0/78g, Lemak: 0/44g , Karbohidrat: 0/325g");
+        labelNutrisi = new Label("Protein: 0/78g, Lemak: 0/44g , Karbohidrat: 0/325g");
         labelNutrisi.getStyleClass().add("label-nutrisi");
         UIUtil.setupLabelLayout(labelNutrisi, 70, 60, 600, 26);
 
-        Label labelStatus = new Label();
+        labelStatus = new Label();
         labelStatus.getStyleClass().add("label-status");
-        UIUtil.setupLabelLayout(labelStatus, 200, 83, 300, 26);
+        UIUtil.setupLabelLayout(labelStatus, 250, 83, 250, 26);
 
         updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
 
