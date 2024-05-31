@@ -52,10 +52,10 @@ public class ProfileScene {
         Button buttonLaporan = new Button("LAPORAN HARIAN");
         buttonLaporan.getStyleClass().add("button-laporan");
         UIUtil.setupButtonLayout(buttonLaporan, 500, 400, 200, 30);
-        // buttonLaporan.setOnAction(e -> {
-        //     DailyReportScene dailyReportScene = new DailyReportScene(stage);
-        //     dailyReportScene.show(id);
-        // });
+        buttonLaporan.setOnAction(e -> {
+            DailyReportScene dailyReportScene = new DailyReportScene(stage);
+            dailyReportScene.show(id);
+        });
 
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);
         UIUtil.setupVBoxLayout(vBoxProfil, 223, 90, 304, 233);

@@ -175,6 +175,7 @@ public class AKGCountScene {
                 hasilHitungAKG.setText(hasilAKG + " Kalori");
                 labelKebutuhan.setText("Anda membutuhkan sekitar " + sprotein + slemak + "\n dan " + skarbo);
                 buttonSimpan.setVisible(true);
+                userProfile.setName(textFieldNama.getText());
                 userProfile.setHeight(tb);
                 userProfile.setWeight(bb);
                 userProfile.setAge(usia);

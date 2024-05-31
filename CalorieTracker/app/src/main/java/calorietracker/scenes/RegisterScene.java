@@ -1,6 +1,7 @@
 package calorietracker.scenes;
 
 import calorietracker.controllers.UsersController;
+import calorietracker.util.SessionUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -74,11 +75,13 @@ public class RegisterScene {
                 labelStatus.setText("Data tidak boleh kosong!");
                 return;
             }
-            if (UsersController.register(username, password)) {
+            boolean isSuccessfullRegister = UsersController.register(username, password);
+            if (isSuccessfullRegister) {
+                SessionUtil.setUsername(username);
                 AKGCountScene akgCountScene = new AKGCountScene(stage);
                 akgCountScene.show();
            } else {
-                labelStatus.setText("Gagal mendaftar. Pastikan data yang diisi benar!");
+                labelStatus.setText("Gagal mendaftar. Username tidak tersedia!");
             }
         });
 

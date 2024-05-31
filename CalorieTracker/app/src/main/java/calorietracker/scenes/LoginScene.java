@@ -1,7 +1,10 @@
 package calorietracker.scenes;
 
+import calorietracker.controllers.UserProfileController;
 import calorietracker.controllers.UsersController;
 import calorietracker.models.User;
+import calorietracker.models.UserProfile;
+import calorietracker.util.SessionUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -69,21 +72,26 @@ public class LoginScene {
         stage.show();
 
         buttonLogin.setOnAction(e -> {
-            String email = textFieldUsername.getText();
+            String username = textFieldUsername.getText();
             String password = passwordField.getText();
-            if (email.isEmpty() || password.isEmpty()){
+            if (username.isEmpty() || password.isEmpty()){
                 labelStatus.setText("Email dan password harus diisi!");
                 return;
             }
-            
-            User user = UsersController.login(email, password);
+            User user = UsersController.login(username, password);
             if (user != null) {
-                DailyReportsScene dailyReportsScene = new DailyReportsScene(stage);
-                dailyReportsScene.show();
+                SessionUtil.setUsername(username);
+                int user_id = UsersController.getUserIdByUsername(username);
+                if(user_id != -1){
+                    UserProfile profile = UserProfileController.getProfileByUserId(user_id);
+                    ProfileScene profileScene = new ProfileScene(stage, profile);
+                    profileScene.show(user_id);
+                }
             } else { 
                 labelStatus.setText("Email atau password salah!");
             }
         });
+
         labelRegister.setOnMouseClicked(e -> {
             RegisterScene registerScene = new RegisterScene(stage);
             registerScene.show();
