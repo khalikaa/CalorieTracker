@@ -16,17 +16,12 @@ public class ProfileScene {
     private Stage stage;
     private UserProfile userProfile;
 
-    public ProfileScene(Stage stage, UserProfile userProfile) {
-        this.stage = stage;
-        this.userProfile = userProfile;
-    }
-
     public ProfileScene(Stage stage) {
         this.stage = stage;
     }
 
-    public void show(int id) {
-        this.userProfile = UserProfileController.getProfileByUserId(id);
+    public void show(int user_id) {
+        userProfile = UserProfileController.getProfileByUserId(user_id);
 
         Pane root = new Pane();
         BackgroundImage backgroundImage = UIUtil.createBackgroundImage("/images/profile_scene.png", 750, 500);
@@ -35,7 +30,7 @@ public class ProfileScene {
         
         Label labelTitle = new Label("Angka Kecukupan Gizi Saya");
         labelTitle.getStyleClass().add("label-title");
-        UIUtil.setupLabelLayout(labelTitle, 240, 25, 270, 25);
+        UIUtil.setupLabelLayout(labelTitle, 216, 25, 322, 25);
         
         Label labelAKG = new Label("AKG Saat Ini:\t\t\t\t" + userProfile.getCalorieNeeds());
         labelAKG.getStyleClass().add("label-form");
@@ -70,7 +65,11 @@ public class ProfileScene {
         Button buttonHitungUlang = new Button("Hitung Ulang AKG");
         buttonHitungUlang.getStyleClass().add("button-hitung-ulang");
         UIUtil.setupButtonLayout(buttonHitungUlang, 212, 335, 325, 25);
-        
+        buttonHitungUlang.setOnAction(e -> {
+            AKGCountScene akgCountScene = new AKGCountScene(stage);
+            akgCountScene.show();
+        });
+
         Button buttonSingOut = new Button("SIGN OUT");
         buttonSingOut.getStyleClass().add("button-sign-out");
         UIUtil.setupButtonLayout(buttonSingOut, 275, 395, 200, 40);
@@ -82,13 +81,17 @@ public class ProfileScene {
         Button buttonProfilSaya = new Button("PROFIL SAYA");
         buttonProfilSaya.getStyleClass().add("button-profil");
         UIUtil.setupButtonLayout(buttonProfilSaya, 0, 450, 375, 50);
+        buttonProfilSaya.setOnAction(e -> {
+            ProfileScene profileScene = new ProfileScene(stage);
+            profileScene.show(user_id);
+        });
 
         Button buttonLaporan = new Button("LAPORAN HARIAN");
         buttonLaporan.getStyleClass().add("button-laporan");
         UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
         buttonLaporan.setOnAction(e -> {
             DailyReportScene dailyReportScene = new DailyReportScene(stage);
-            dailyReportScene.show(id);
+            dailyReportScene.show(user_id);
         });
 
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);

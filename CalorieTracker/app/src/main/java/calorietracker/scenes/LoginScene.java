@@ -1,9 +1,7 @@
 package calorietracker.scenes;
 
-import calorietracker.controllers.UserProfileController;
 import calorietracker.controllers.UsersController;
 import calorietracker.models.User;
-import calorietracker.models.UserProfile;
 import calorietracker.util.SessionUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -83,8 +81,7 @@ public class LoginScene {
                 SessionUtil.setUsername(username);
                 int user_id = UsersController.getUserIdByUsername(username);
                 if(user_id != -1){
-                    UserProfile profile = UserProfileController.getProfileByUserId(user_id);
-                    ProfileScene profileScene = new ProfileScene(stage, profile);
+                    ProfileScene profileScene = new ProfileScene(stage);
                     profileScene.show(user_id);
                 }
             } else { 

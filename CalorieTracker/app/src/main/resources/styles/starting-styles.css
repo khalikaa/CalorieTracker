@@ -45,8 +45,8 @@
     font-family: 'Poppins';
     font-size: 13px;
     -fx-font-size: 13px;
-    padding: 15px;
-    -fx-padding: 15px;
+    padding: 0px 15px;
+    -fx-padding: 0px 15px;
     -fx-text-fill: #2f5447;
     max-width: 260px;
     -fx-max-width: 260px;
@@ -71,8 +71,8 @@
     -fx-font-family: 'Poppins';
     font-size: 13px;
     -fx-font-size: 13px;
-    padding: 15px;
-    -fx-padding: 15px;
+    padding: 0px 15px;
+    -fx-padding: 0px 15px;
     -fx-text-fill: #720808;
     max-width: 260px;
     -fx-max-width: 260px;

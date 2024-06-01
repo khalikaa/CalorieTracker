@@ -38,8 +38,8 @@ public class UsersController extends DbConfig {
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return false;
-        }
+        return false;
+    }
 
     public static boolean register(String username, String password) {
         if (isUsernameTaken(username)) {
@@ -66,12 +66,11 @@ public class UsersController extends DbConfig {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
-            System.out.println(resultSet.getInt("id"));
             return resultSet.getInt("id");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DbConfig.closeResources();
+            closeResources();
         }
         return -1; 
     }

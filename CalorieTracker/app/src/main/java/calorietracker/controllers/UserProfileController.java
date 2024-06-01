@@ -3,11 +3,12 @@ package calorietracker.controllers;
 import calorietracker.config.DbConfig;
 import calorietracker.models.UserProfile;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserProfileController extends DbConfig {
-    public static boolean addProfile(int user_id, String name, int height, int weight, int age, String gender, String activityLevel, int calorie_needs, double proteinNeeds,
-                                     double fatNeeds, double carboNeeds) {
+    public static boolean addProfile(int user_id, String name, int height, int weight, int age, String gender, String activityLevel,
+    int calorie_needs, double proteinNeeds, double fatNeeds, double carboNeeds) {
         query = "INSERT INTO user_profiles (user_id, name, height, weight, age, gender, activity_level, calorie_needs, protein_needs, fat_needs, carbo_needs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             getConnection();
@@ -28,7 +29,7 @@ public class UserProfileController extends DbConfig {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DbConfig.closeResources();
+            closeResources();
         }
         return false;
     }
@@ -55,10 +56,52 @@ public class UserProfileController extends DbConfig {
                 userProfile.setFatNeeds(resultSet.getDouble("fat_needs"));
                 userProfile.setCarboNeeds(resultSet.getDouble("carbo_needs"));
             }
-            DbConfig.closeResources();
+            closeResources();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return userProfile;
     }
+
+    public static boolean isExistingProfile(int userId) {
+        query = "SELECT * FROM user_profiles WHERE user_id = ?";
+        try {
+            getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updateProfile(int user_id, String name, int height, int weight, int age, String gender, String activityLevel, int calorieNeeds, double proteinNeeds,
+    double fatNeeds, double carboNeeds) {
+        query = "UPDATE user_profiles SET name=?, height=?, weight=?, age=?, gender=?, activity_level=?, calorie_needs=?, protein_needs=?, fat_needs=?, carbo_needs=? WHERE user_id=?";
+        try {
+            getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, height);
+            preparedStatement.setInt(3, weight);
+            preparedStatement.setInt(4, age);
+            preparedStatement.setString(5, gender);
+            preparedStatement.setString(6, activityLevel);
+            preparedStatement.setInt(7, calorieNeeds);
+            preparedStatement.setDouble(8, proteinNeeds);
+            preparedStatement.setDouble(9, fatNeeds);
+            preparedStatement.setDouble(10, carboNeeds);
+            preparedStatement.setInt(11, user_id);
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
+        }
+    return false;
+    }       
 }

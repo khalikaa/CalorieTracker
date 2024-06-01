@@ -129,6 +129,10 @@ public class DailyReportScene {
         Button buttonProfil = new Button("PROFIL SAYA");
         buttonProfil.getStyleClass().add("button-profilsaya");
         UIUtil.setupButtonLayout(buttonProfil, 0, 450, 375, 50);
+        buttonProfil.setOnAction(e -> {
+            ProfileScene profileScene = new ProfileScene(stage);
+            profileScene.show(user_id);
+        });
         
         Button buttonLaporan = new Button("LAPORAN HARIAN");
         buttonLaporan.getStyleClass().add("button-laporan");
@@ -136,11 +140,11 @@ public class DailyReportScene {
 
         labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
         labelKalori.getStyleClass().add("label-kalori");
-        UIUtil.setupLabelLayout(labelKalori, 205, 30, 325, 26);
+        UIUtil.setupLabelLayout(labelKalori, 185, 30, 380, 26);
 
         labelNutrisi = new Label("Protein: 0/78g, Lemak: 0/44g , Karbohidrat: 0/325g");
         labelNutrisi.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNutrisi, 70, 60, 600, 26);
+        UIUtil.setupLabelLayout(labelNutrisi, 75, 60, 600, 26);
 
         labelStatus = new Label();
         labelStatus.getStyleClass().add("label-status");

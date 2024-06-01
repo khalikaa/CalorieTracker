@@ -103,6 +103,15 @@
     -fx-alignment: center;
 }
 
+.label-status{
+    -fx-text-fill: #720808;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-size: 11px;
+    -fx-font-size: 11px;
+    -fx-alignment: center;
+}
+
 .label-header{
     -fx-text-fill: #720808;
     font-family: 'Poppins';

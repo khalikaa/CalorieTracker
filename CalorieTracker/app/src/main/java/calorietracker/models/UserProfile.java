@@ -1,9 +1,9 @@
 package calorietracker.models;
 
 public class UserProfile extends Model {
-    int user_id, height, weight, age, calorieNeeds;
-    double proteinNeeds, fatNeeds, carboNeeds;
-    String name, gender, activityLevel;
+    private int user_id, height, weight, age, calorieNeeds;
+    private double proteinNeeds, fatNeeds, carboNeeds;
+    private String name, gender, activityLevel;
 
     public UserProfile() {}
     
