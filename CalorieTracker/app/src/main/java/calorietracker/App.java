@@ -1,7 +1,7 @@
 package calorietracker;
 
-import calorietracker.scenes.LoginScene;
 import calorietracker.scenes.SplashScreen;
+import calorietracker.scenes.StartingScene;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -36,9 +36,9 @@ public class App extends Application {
                 Scene scene = new Scene(root, 750, 500);
                 stage.setScene(scene);
                 stage.show();
-                
-                LoginScene loginScene = new LoginScene(stage);
-                loginScene.show();
+ 
+                StartingScene startingScene = new StartingScene(stage);
+                startingScene.show();
             });
         }).start();
     }

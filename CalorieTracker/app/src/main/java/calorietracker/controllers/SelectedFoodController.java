@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SelectedFoodController extends DbConfig {
      public static void addSelectedFood(int userId, SelectedFood food) {
-        query = "INSERT INTO selected_foods(user_id, name, energy, protein, fat, carbohydrate, weight) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        query = "INSERT INTO selected_foods(user_id, name, energy, protein, fat, carbohydrate, weight, food_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             getConnection();
             preparedStatement = connection.prepareStatement(query);
@@ -18,6 +18,7 @@ public class SelectedFoodController extends DbConfig {
             preparedStatement.setDouble(5, food.getFat());
             preparedStatement.setDouble(6, food.getCarbohydrate());
             preparedStatement.setDouble(7, food.getWeight());
+            preparedStatement.setInt(8, food.getFoodId());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

@@ -74,8 +74,8 @@ public class ProfileScene {
         buttonSingOut.getStyleClass().add("button-sign-out");
         UIUtil.setupButtonLayout(buttonSingOut, 275, 395, 200, 40);
         buttonSingOut.setOnAction(e-> {
-            LoginScene loginScene = new LoginScene(stage);
-            loginScene.show();
+            StartingScene startingScene = new StartingScene(stage);
+            startingScene.show();
         });
 
         Button buttonProfilSaya = new Button("PROFIL SAYA");

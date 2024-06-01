@@ -151,103 +151,12 @@ public class AKGCountScene {
         
         UserProfile userProfile = new UserProfile();
 
-        buttonHitungAKG.setOnAction(e -> {
-            hitungAKG(userProfile);
-
-            // try {
-            //     double akg;
-            //     int usia = Integer.parseInt(textFieldUsia.getText());
-            //     int tb = Integer.parseInt(textFieldTB.getText());
-            //     int bb = Integer.parseInt(textFieldBB.getText());
-
-            //     if (usia <= 0 || tb <= 0 || bb <= 0) {
-            //         throw new NumberFormatException("Inputan tidak boleh negatif");
-            //     }
-
-            //     String gender = boxGender.getValue();
-            //     String aktivitas = boxAktivitas.getValue();
-        
-            //     if (gender.equals("Perempuan")) {
-            //         akg = (10 * bb) + (6.25 * tb) - (5 * usia) + 139;
-            //     } else {
-            //         akg = (10 * bb) + (6.25 * tb) - (5 * usia) + 305;
-            //     }
-        
-            //     if (aktivitas.equals("Kurang Aktif")) {
-            //         akg *= 1.2;
-            //     } else if (aktivitas.equals("Cukup Aktif")) {
-            //         akg *= 1.375;
-            //     } else if (aktivitas.equals("Aktif")) {
-            //         akg *= 1.55;
-            //     } else if (aktivitas.equals("Sangat Aktif")) {
-            //         akg *= 1.725;
-            //     }
-        
-            //     double protein = (15.0 / 100 * akg) / 4;
-            //     double lemak = (20.0 / 100 * akg) / 9;
-            //     double karbo = (65.0 / 100 * akg) / 4;
-        
-            //     String sprotein = String.format("%.2f", protein) + "g Protein, ";
-            //     String slemak = String.format("%.2f", lemak) + "g Lemak,";
-            //     String skarbo = String.format("%.2f", karbo) + "g Karbohidrat";
-        
-            //     int hasilAKG = (int) akg;
-            //     labelHasil.setText("Angka Kecukupan Gizi Anda adalah:");
-            //     hasilHitungAKG.setText(hasilAKG + " Kalori");
-            //     labelNut1.setText("Anda membutuhkan sekitar " + sprotein + slemak);
-            //     labelNut2.setText("dan " + skarbo);
-            //     buttonSimpan.setVisible(true);
-            //     userProfile.setName(textFieldNama.getText());
-            //     userProfile.setHeight(tb);
-            //     userProfile.setWeight(bb);
-            //     userProfile.setAge(usia);
-            //     userProfile.setGender(gender);
-            //     userProfile.setActivityLevel(aktivitas);
-            //     userProfile.setCalorieNeeds(hasilAKG);
-            //     userProfile.setProteinNeeds(protein);
-            //     userProfile.setFatNeeds(lemak);
-            //     userProfile.setCarboNeeds(karbo);
-            // } catch (NumberFormatException ex) {
-            //     labelHasil.setText("Input tidak valid.");
-            // }
-        });
-
-        buttonSimpan.setOnAction(s -> {
-            simpanAKG(userProfile);
-            // try {
-            //     String username = SessionUtil.getUsername();
-            //     if(username != null){
-            //         try {
-            //             int user_id = UsersController.getUserIdByUsername(username);
-            //             if(user_id != -1){
-            //                 boolean isSuccessfullAddAKG = UserProfileController.addProfile(user_id,
-            //                 userProfile.getName(),
-            //                 userProfile.getHeight(),
-            //                 userProfile.getWeight(),
-            //                 userProfile.getAge(),
-            //                 userProfile.getGender(),
-            //                 userProfile.getActivityLevel(),
-            //                 userProfile.getCalorieNeeds(),
-            //                 userProfile.getProteinNeeds(),
-            //                 userProfile.getFatNeeds(),
-            //                 userProfile.getCarboNeeds());
-            //                 if (isSuccessfullAddAKG) {
-            //                     UserProfile newProfile = UserProfileController.getProfileByUserId(user_id);
-            //                     ProfileScene profileScene = new ProfileScene(stage, newProfile);
-            //                     profileScene.show(user_id); 
-            //                 }
-            //             }                        
-            //         } catch (Exception e) {
-            //             e.printStackTrace();
-            //         }
-            //     }
-            // } catch (Exception e) {
-            //     e.printStackTrace();
-            // }
-        });
+        buttonHitungAKG.setOnAction(e -> { hitungAKG(userProfile); });
+        buttonSimpan.setOnAction(s -> { simpanAKG(userProfile); });
 
         root.getChildren().addAll(labelTittle, gridPane, buttonHitungAKG, labelHasil, hasilHitungAKG,
-        labelNut1, labelNut2, buttonSimpan, labelHead1, labelKet1, labelHead2, labelKet2);
+        labelNut1, labelNut2, buttonSimpan, labelStatus, labelHead1, labelKet1, labelHead2, labelKet2);
+        
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/akgc-styles.css").toExternalForm());
         stage.setScene(scene);

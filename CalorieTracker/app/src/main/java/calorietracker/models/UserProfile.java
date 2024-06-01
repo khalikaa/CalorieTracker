@@ -6,7 +6,7 @@ public class UserProfile extends Model {
     private String name, gender, activityLevel;
 
     public UserProfile() {}
-    
+
     public UserProfile(String name, int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
             double fatNeeds, double carboNeeds, String gender, String activityLevel) {
         super(id);
