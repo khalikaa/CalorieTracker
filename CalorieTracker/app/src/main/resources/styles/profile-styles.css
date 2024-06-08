@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-.button-profil{
+.label-profil{
     background-color: #FDCCD1;
     -fx-background-color: #FDCCD1;
     -fx-text-fill: #720808;
@@ -15,7 +15,7 @@
     -fx-effect: dropshadow(gaussian, #720808, 5, 0.1, 0, 0);
 }
 
-.button-laporan{
+.label-laporan{
     background-color: #FFB8BF; 
     -fx-background-color: #FFB8BF;
     -fx-text-fill:#720808;

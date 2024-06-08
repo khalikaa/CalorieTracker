@@ -78,34 +78,22 @@ public class ProfileScene {
             startingScene.show();
         });
 
-        Button buttonProfilSaya = new Button("PROFIL SAYA");
-        buttonProfilSaya.getStyleClass().add("button-profil");
-        UIUtil.setupButtonLayout(buttonProfilSaya, 0, 450, 375, 50);
-        buttonProfilSaya.setOnAction(e -> {
-            ProfileScene profileScene = new ProfileScene(stage);
-            profileScene.show(user_id);
-        });
-
+        Label labelProfil = new Label("PROFIL SAYA");
+        labelProfil.getStyleClass().add("label-profil");
+        UIUtil.setupLabelLayout(labelProfil, 0, 450, 375, 50);
+        
         Label labelLaporan = new Label("LAPORAN HARIAN");
-        labelLaporan.getStyleClass().add("button-laporan");
+        labelLaporan.getStyleClass().add("label-laporan");
         UIUtil.setupLabelLayout(labelLaporan, 375, 450, 375, 50);
         labelLaporan.setOnMouseClicked(e -> {
             DailyReportScene dailyReportScene = new DailyReportScene(stage);
             dailyReportScene.show(user_id);
         });
 
-        // Button buttonLaporan = new Button("LAPORAN HARIAN");
-        // buttonLaporan.getStyleClass().add("button-laporan");
-        // UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
-        // buttonLaporan.setOnAction(e -> {
-        //     DailyReportScene dailyReportScene = new DailyReportScene(stage);
-        //     dailyReportScene.show(user_id);
-        // });
-
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);
         UIUtil.setupVBoxLayout(vBoxProfil, 223, 90, 304, 233);
         
-        root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, labelLaporan, buttonProfilSaya);
+        root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, labelLaporan, labelProfil);
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/profile-styles.css").toExternalForm());
         stage.setScene(scene);

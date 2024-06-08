@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-.button-profil{
+.label-profil{
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
     -fx-text-fill: #720808;
@@ -9,11 +9,12 @@
     -fx-font-family: 'Poppins';
     font-size: 15px;
     -fx-font-size: 15px;
+    -fx-alignment: center;
     font-weight: bold;
     -fx-font-weight: bold;
 }
 
-.button-laporan{
+.label-laporan{
     background-color: #FDCCD1;
     -fx-background-color: #FDCCD1;
     -fx-text-fill:#720808;
@@ -22,6 +23,7 @@
     -fx-font-family: 'Poppins';
     font-size: 15px;
     -fx-font-size: 15px;
+    -fx-alignment: center;
     font-weight: bold;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, #720808, 5, 0.1, 0, 0);

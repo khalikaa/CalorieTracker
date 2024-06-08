@@ -10,6 +10,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class UIUtil {
     public static BackgroundImage createBackgroundImage(String imagePath, double width, double height) {

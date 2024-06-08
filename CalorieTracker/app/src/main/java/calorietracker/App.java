@@ -1,5 +1,6 @@
 package calorietracker;
 
+import calorietracker.scenes.AKGCountScene;
 import calorietracker.scenes.SplashScreen;
 import calorietracker.scenes.StartingScene;
 import javafx.application.Application;
@@ -37,6 +38,8 @@ public class App extends Application {
                 stage.setScene(scene);
                 stage.show();
  
+                // AKGCountScene a = new AKGCountScene(stage);
+                // a.show();
                 StartingScene startingScene = new StartingScene(stage);
                 startingScene.show();
             });

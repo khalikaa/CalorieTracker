@@ -14,6 +14,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class AKGCountScene {
@@ -132,22 +134,41 @@ public class AKGCountScene {
         Label labelHead1 = new Label("Apa Itu AKG?");
         labelHead1.getStyleClass().add("label-header");
         UIUtil.setupLabelLayout(labelHead1, 490,30, 135, 17);
-        
-        Label labelKet1 = new Label("Angka Kebutuhan Gizi (AKG) adalah\npanduan jumlah     nutrisi harian yang\ndiperlukan untuk menjaga kesehatan\ndan mencegah penyakit, yang diukur\ndalam satuan kalori. Penyusun utama\nkalori ini adalah makronutrien seperti\n karbohidrat, protein, dan lemak.\nKebutuhan ini bervariasi berdasarkan\nusia, jenis kelamin, berat badan, tinggi\nbadan, dan tingkat aktivitas fisik.");
-        labelKet1.getStyleClass().add("label-pengertian");
-        UIUtil.setupLabelLayout(labelKet1, 490, 50, 230, 170);
 
-        Label labelHead2 = new Label("*Tingkat aktivitas yang harus dipilih\n berdasarkan kegiatan sehari-hari:");
+        TextFlow textFlow1 = new TextFlow();
+        textFlow1.getChildren().addAll(
+            createRegularText("Angka Kebutuhan Gizi (AKG) adalah\n"),
+            createBoldText("panduan jumlah nutrisi harian"),
+            createRegularText(" yang\n diperlukan untuk menjaga kesehatan\n" +
+                       "dan mencegah penyakit, yang diukur\n dalam satuan "),
+            createBoldText("kalori"),
+            createRegularText(" .Penyusun utama\n" +
+            "kalori ini adalah makronutrien seperti\n"),
+            createBoldText("karbohidrat, protein, dan lemak.\n"),
+            createRegularText("Kebutuhan ini bervariasi berdasarkan\n" +
+                       "usia, jenis kelamin, berat badan, tinggi\n" +
+                       "badan, dan tingkat aktivitas fisik.")
+        );
+        textFlow1.setLayoutX(490);
+        textFlow1.setLayoutY(50);
+
+        Label labelHead2 = new Label("*Tingkat aktivitas yang\nharus dipilih berdasarkan\nkegiatan sehari-hari:");
         labelHead2.getStyleClass().add("label-header");
-        UIUtil.setupLabelLayout(labelHead2, 490, 270, 230, 40);
+        UIUtil.setupLabelLayout(labelHead2, 490, 250, 230, 60);
 
-        Label labelKet2 = new Label("\r\n" + 
-                        "- Kurang Aktif: Kerja kantoran, sedikit\npekerjaan rumah.\r\n" + 
-                        "- Cukup Aktif: Kegiatan sehari-hari,\npekerjaan rumah, latihan ringan.\r\n" + 
-                        "- Aktif: Kerja fisik ringan, olahraga\nringan rutin.\r\n" + 
-                        "- Sangat Aktif: Kerja fisik berat,\nolahraga berat rutin.");
-        labelKet2.getStyleClass().add("label-pengertian");
-        UIUtil.setupLabelLayout(labelKet2, 490, 300, 200, 150);
+        TextFlow textFlow2 = new TextFlow();
+        textFlow2.getChildren().addAll(
+            createBoldText("- Kurang Aktif: "),
+            createRegularText("Kebanyakan duduk\natau rebahan\n"),
+            createBoldText("- Cukup Aktif: "),
+            createRegularText("Beres-beres rumah,\nolahraga tipis-tipis\n"),
+            createBoldText("- Aktif: "),
+            createRegularText("Kerja fisik ringan,\nolahraga ringan rutin\n"),
+            createBoldText("- Sangat Aktif: "),
+            createRegularText("Kerja fisik berat,\nolahraga berat rutin")
+        );
+        textFlow2.setLayoutX(490);
+        textFlow2.setLayoutY(313);
         
         UserProfile userProfile = new UserProfile();
 
@@ -155,7 +176,7 @@ public class AKGCountScene {
         buttonSimpan.setOnAction(s -> { simpanAKG(userProfile); });
 
         root.getChildren().addAll(labelTittle, gridPane, buttonHitungAKG, labelHasil, hasilHitungAKG,
-        labelNut1, labelNut2, buttonSimpan, labelStatus, labelHead1, labelKet1, labelHead2, labelKet2);
+        labelNut1, labelNut2, buttonSimpan, labelStatus, labelHead1, textFlow1, labelHead2, textFlow2);
         
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/akgc-styles.css").toExternalForm());
@@ -183,6 +204,18 @@ public class AKGCountScene {
                 e.printStackTrace();
             }
         }
+    }
+
+    private Text createRegularText(String content) {
+        Text text = new Text(content);
+        text.getStyleClass().add("label-pengertian");
+        return text;
+    }
+
+    private Text createBoldText(String content) {
+        Text text = new Text(content);
+        text.getStyleClass().add("label-pengertian-bold");
+        return text;
     }
 
     private void hitungAKG(UserProfile userProfile) {

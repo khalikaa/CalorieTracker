@@ -59,12 +59,6 @@ public class DailyReportScene {
         TableColumn<SelectedFood, Double> kolomKarbo = new TableColumn<>("Karbo (g)");
         TableColumn<SelectedFood, Integer> kolomBerat = new TableColumn<>("Berat (g)");
         TableColumn<SelectedFood, Void> kolomHapus = new TableColumn<>("Hapus");
-        // TableColumn<SelectedFood, String> kolomEnergi = new TableColumn<>("Energi (Kal)");
-        // TableColumn<SelectedFood, String> kolomProtein = new TableColumn<>("Protein (g)");
-        // TableColumn<SelectedFood, String> kolomLemak = new TableColumn<>("Lemak (g)");
-        // TableColumn<SelectedFood, String> kolomKarbo = new TableColumn<>("Karbo (g)");
-        // TableColumn<SelectedFood, String> kolomBerat = new TableColumn<>("Berat (g)");
-        // TableColumn<SelectedFood, String> kolomHapus = new TableColumn<>("Hapus");
 
         kolomNama.setPrefWidth(150);
         kolomEnergi.setPrefWidth(70);
@@ -126,17 +120,17 @@ public class DailyReportScene {
             updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
         });
 
-        Button buttonProfil = new Button("PROFIL SAYA");
-        buttonProfil.getStyleClass().add("button-profil");
-        UIUtil.setupButtonLayout(buttonProfil, 0, 450, 375, 50);
-        buttonProfil.setOnAction(e -> {
+        Label labelProfil = new Label("PROFIL SAYA");
+        labelProfil.getStyleClass().add("label-profil");
+        UIUtil.setupLabelLayout(labelProfil, 0, 450, 375, 50);
+        labelProfil.setOnMouseClicked(e -> {
             ProfileScene profileScene = new ProfileScene(stage);
             profileScene.show(user_id);
         });
-        
-        Button buttonLaporan = new Button("LAPORAN HARIAN");
-        buttonLaporan.getStyleClass().add("button-laporan");
-        UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
+
+        Label labelLaporan = new Label("LAPORAN HARIAN");
+        labelLaporan.getStyleClass().add("label-laporan");
+        UIUtil.setupLabelLayout(labelLaporan, 375, 450, 375, 50);
 
         labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
         labelKalori.getStyleClass().add("label-kalori");
@@ -152,7 +146,7 @@ public class DailyReportScene {
 
         updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
 
-        root.getChildren().addAll(selectedFoodsTableView, buttonProfil, buttonLaporan,
+        root.getChildren().addAll(selectedFoodsTableView, labelProfil, labelLaporan, 
         buttonTambah, buttonReset, labelKalori, labelNutrisi, labelStatus);
 
         Scene scene = new Scene(root, 750, 500);
