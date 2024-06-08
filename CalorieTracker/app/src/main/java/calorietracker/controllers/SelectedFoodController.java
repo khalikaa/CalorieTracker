@@ -34,6 +34,7 @@ public class SelectedFoodController extends DbConfig {
             preparedStatement.setInt(1, userId);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int energy = resultSet.getInt("energy");
                 double protein = resultSet.getDouble("protein");
@@ -41,7 +42,7 @@ public class SelectedFoodController extends DbConfig {
                 double carbo =  resultSet.getDouble("carbohydrate");
                 double weight = resultSet.getDouble("weight");
                 int food_id = resultSet.getInt("food_id");
-                SelectedFood selectedFood = new SelectedFood(userId, name, energy, protein, fat, carbo, weight, food_id);
+                SelectedFood selectedFood = new SelectedFood(id, userId, name, energy, protein, fat, carbo, weight, food_id);
                 selectedFoods.add(selectedFood);
             }
         } catch (Exception e) {
@@ -50,12 +51,12 @@ public class SelectedFoodController extends DbConfig {
         return selectedFoods;
     }
 
-    public static void deleteSelectedFood(int foodId) {
-        query = "DELETE FROM selected_foods WHERE food_id = ?";
+    public static void deleteSelectedFood(int id) {
+        query = "DELETE FROM selected_foods WHERE id = ?";
         try {
             getConnection();
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, foodId);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

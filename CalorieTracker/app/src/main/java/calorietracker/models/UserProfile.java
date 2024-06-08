@@ -7,20 +7,20 @@ public class UserProfile extends Model {
 
     public UserProfile() {}
 
-    public UserProfile(String name, int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
-            double fatNeeds, double carboNeeds, String gender, String activityLevel) {
-        super(id);
-        this.user_id = user_id;
-        this.height = height;
-        this.weight = weight;
-        this.age = age;
-        this.calorieNeeds = calorieNeeds;
-        this.proteinNeeds = proteinNeeds;
-        this.fatNeeds = fatNeeds;
-        this.carboNeeds = carboNeeds;
-        this.gender = gender;
-        this.activityLevel = activityLevel;
-    }
+    // public UserProfile(String name, int id, int user_id, int height, int weight, int age, int calorieNeeds, double proteinNeeds,
+    //         double fatNeeds, double carboNeeds, String gender, String activityLevel) {
+    //     super(id);
+    //     this.user_id = user_id;
+    //     this.height = height;
+    //     this.weight = weight;
+    //     this.age = age;
+    //     this.calorieNeeds = calorieNeeds;
+    //     this.proteinNeeds = proteinNeeds;
+    //     this.fatNeeds = fatNeeds;
+    //     this.carboNeeds = carboNeeds;
+    //     this.gender = gender;
+    //     this.activityLevel = activityLevel;
+    // }
 
     public int getUser_id() {
         return user_id;

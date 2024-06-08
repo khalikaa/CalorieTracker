@@ -41,10 +41,10 @@ public class ProfileScene {
         Label labelUsia = new Label("Usia:\t\t\t\t\t" + userProfile.getAge());
         labelUsia.getStyleClass().add("label-form");
 
-        Label labelBB = new Label("Berat Badan:\t\t\t\t" + userProfile.getHeight() + "cm");
+        Label labelBB = new Label("Berat Badan:\t\t\t\t" + userProfile.getWeight() + " kg");
         labelBB.getStyleClass().add("label-form");
 
-        Label labelTB = new Label("Tinggi Badan:\t\t\t" + userProfile.getWeight() + "kg");
+        Label labelTB = new Label("Tinggi Badan:\t\t\t" + userProfile.getHeight() + " cm");
         labelTB.getStyleClass().add("label-form");
 
         Label labelJK = new Label("Jenis Kelamin:\t\t\t" + userProfile.getGender());
@@ -86,18 +86,26 @@ public class ProfileScene {
             profileScene.show(user_id);
         });
 
-        Button buttonLaporan = new Button("LAPORAN HARIAN");
-        buttonLaporan.getStyleClass().add("button-laporan");
-        UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
-        buttonLaporan.setOnAction(e -> {
+        Label labelLaporan = new Label("LAPORAN HARIAN");
+        labelLaporan.getStyleClass().add("button-laporan");
+        UIUtil.setupLabelLayout(labelLaporan, 375, 450, 375, 50);
+        labelLaporan.setOnMouseClicked(e -> {
             DailyReportScene dailyReportScene = new DailyReportScene(stage);
             dailyReportScene.show(user_id);
         });
 
+        // Button buttonLaporan = new Button("LAPORAN HARIAN");
+        // buttonLaporan.getStyleClass().add("button-laporan");
+        // UIUtil.setupButtonLayout(buttonLaporan, 375, 450, 375, 50);
+        // buttonLaporan.setOnAction(e -> {
+        //     DailyReportScene dailyReportScene = new DailyReportScene(stage);
+        //     dailyReportScene.show(user_id);
+        // });
+
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);
         UIUtil.setupVBoxLayout(vBoxProfil, 223, 90, 304, 233);
         
-        root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, buttonProfilSaya, buttonLaporan);
+        root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, labelLaporan, buttonProfilSaya);
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/profile-styles.css").toExternalForm());
         stage.setScene(scene);

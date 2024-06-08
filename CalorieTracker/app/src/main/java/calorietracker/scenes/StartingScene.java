@@ -83,7 +83,11 @@ public class StartingScene {
 
         mainLayout.getChildren().add(loginLayout);
 
-        labelRegisterSwitch.setOnMouseClicked(e -> showRegister());
+        labelRegisterSwitch.setOnMouseClicked(e -> {
+            showRegister();
+            textFieldUsername.setText("");
+            passwordField.setText("");
+        });
 
         buttonLogin.setOnAction(e -> {
             String username = textFieldUsername.getText();
@@ -120,7 +124,11 @@ public class StartingScene {
 
         mainLayout.getChildren().add(registerLayout);
 
-        labelLoginSwitch.setOnMouseClicked(e -> showLogin());
+        labelLoginSwitch.setOnMouseClicked(e -> {
+            showLogin();
+            textFieldUsername.setText("");
+            passwordField.setText("");           
+        });
 
         buttonSignup.setOnAction(e -> {
             String username = textFieldUsername.getText();

@@ -9,6 +9,18 @@ public class SelectedFood extends Model{
     private double carbohydrate;
     private double weight;
 
+    public SelectedFood(int id, int user_id, String name, int energy, double protein, double fat, double carbohydrate, double weight, int food_id) {
+        super(id);
+        this.user_id = user_id;
+        this.name = name;
+        this.energy = energy;
+        this.protein = protein;
+        this.fat = fat;
+        this.carbohydrate = carbohydrate;
+        this.weight = weight;
+        this.food_id = food_id;
+    }
+
     public SelectedFood(int user_id, String name, int energy, double protein, double fat, double carbohydrate, double weight, int food_id) {
         this.user_id = user_id;
         this.name = name;

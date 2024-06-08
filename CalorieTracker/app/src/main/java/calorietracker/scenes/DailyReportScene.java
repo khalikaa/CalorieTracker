@@ -46,18 +46,25 @@ public class DailyReportScene {
         foods.addAll(selectedFoods);
 
         TableView<SelectedFood> selectedFoodsTableView = new TableView<>();
-        selectedFoodsTableView.setPrefWidth(600);
-        selectedFoodsTableView.setPrefHeight(400);
+        selectedFoodsTableView.setItems(foods);
         selectedFoodsTableView.setLayoutX(75);
-        selectedFoodsTableView.setLayoutY(50);
+        selectedFoodsTableView.setLayoutY(113);
+        selectedFoodsTableView.setPrefWidth(600);
+        selectedFoodsTableView.setPrefHeight(260);
 
         TableColumn<SelectedFood, String> kolomNama = new TableColumn<>("Nama Makanan");
-        TableColumn<SelectedFood, String> kolomEnergi = new TableColumn<>("Energi (Kal)");
-        TableColumn<SelectedFood, String> kolomProtein = new TableColumn<>("Protein (g)");
-        TableColumn<SelectedFood, String> kolomLemak = new TableColumn<>("Lemak (g)");
-        TableColumn<SelectedFood, String> kolomKarbo = new TableColumn<>("Karbo (g)");
-        TableColumn<SelectedFood, String> kolomBerat = new TableColumn<>("Berat (g)");
-        TableColumn<SelectedFood, String> kolomHapus = new TableColumn<>("Hapus");
+        TableColumn<SelectedFood, Integer> kolomEnergi = new TableColumn<>("Energi (Kal)");
+        TableColumn<SelectedFood, Double> kolomProtein = new TableColumn<>("Protein (g)");
+        TableColumn<SelectedFood, Double> kolomLemak = new TableColumn<>("Lemak (g)");
+        TableColumn<SelectedFood, Double> kolomKarbo = new TableColumn<>("Karbo (g)");
+        TableColumn<SelectedFood, Integer> kolomBerat = new TableColumn<>("Berat (g)");
+        TableColumn<SelectedFood, Void> kolomHapus = new TableColumn<>("Hapus");
+        // TableColumn<SelectedFood, String> kolomEnergi = new TableColumn<>("Energi (Kal)");
+        // TableColumn<SelectedFood, String> kolomProtein = new TableColumn<>("Protein (g)");
+        // TableColumn<SelectedFood, String> kolomLemak = new TableColumn<>("Lemak (g)");
+        // TableColumn<SelectedFood, String> kolomKarbo = new TableColumn<>("Karbo (g)");
+        // TableColumn<SelectedFood, String> kolomBerat = new TableColumn<>("Berat (g)");
+        // TableColumn<SelectedFood, String> kolomHapus = new TableColumn<>("Hapus");
 
         kolomNama.setPrefWidth(150);
         kolomEnergi.setPrefWidth(70);
@@ -73,14 +80,14 @@ public class DailyReportScene {
         kolomLemak.setCellValueFactory(new PropertyValueFactory<>("fat"));
         kolomKarbo.setCellValueFactory(new PropertyValueFactory<>("carbohydrate"));
         kolomBerat.setCellValueFactory(new PropertyValueFactory<>("weight"));
-        kolomHapus.setCellFactory(new Callback<TableColumn<SelectedFood, String>, TableCell<SelectedFood, String>>() {
+        kolomHapus.setCellFactory(new Callback<TableColumn<SelectedFood, Void>, TableCell<SelectedFood, Void>>() {
             @Override
-            public TableCell<SelectedFood, String> call(TableColumn<SelectedFood, String> param) {
-                return new TableCell<SelectedFood, String>() {
+            public TableCell<SelectedFood, Void> call(TableColumn<SelectedFood, Void> param) {
+                return new TableCell<SelectedFood, Void>() {
                     Button buttonHapus = new Button("Hapus");
 
                     @Override
-                    protected void updateItem(String item, boolean empty) {
+                    protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
@@ -102,15 +109,9 @@ public class DailyReportScene {
 
         selectedFoodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomHapus);
 
-        selectedFoodsTableView.setItems(foods);
-        selectedFoodsTableView.setLayoutX(75);
-        selectedFoodsTableView.setLayoutY(113);
-        selectedFoodsTableView.setPrefWidth(600);
-        selectedFoodsTableView.setPrefHeight(261);
-
         Button buttonTambah = new Button("+ TAMBAH MAKANAN");
         buttonTambah.getStyleClass().add("button-tambah");
-        UIUtil.setupButtonLayout(buttonTambah, 66, 392, 400, 40);
+        UIUtil.setupButtonLayout(buttonTambah, 75, 392, 380, 40);
         buttonTambah.setOnAction(e -> {
             AddFoodScene addFoodScene = new AddFoodScene(stage);
             addFoodScene.show(user_id);
@@ -123,11 +124,10 @@ public class DailyReportScene {
             SelectedFoodController.deleteAllSelectedFoodsByUserId(user_id);
             foods.clear();
             updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
-            labelStatus.setText("");
         });
 
         Button buttonProfil = new Button("PROFIL SAYA");
-        buttonProfil.getStyleClass().add("button-profilsaya");
+        buttonProfil.getStyleClass().add("button-profil");
         UIUtil.setupButtonLayout(buttonProfil, 0, 450, 375, 50);
         buttonProfil.setOnAction(e -> {
             ProfileScene profileScene = new ProfileScene(stage);
@@ -140,15 +140,15 @@ public class DailyReportScene {
 
         labelKalori = new Label("0 dari " + userProfile.getCalorieNeeds() + " Kalori Terpenuhi");
         labelKalori.getStyleClass().add("label-kalori");
-        UIUtil.setupLabelLayout(labelKalori, 185, 30, 380, 26);
+        UIUtil.setupLabelLayout(labelKalori, 185, 25, 380, 26);
 
         labelNutrisi = new Label("Protein: 0/78g, Lemak: 0/44g , Karbohidrat: 0/325g");
         labelNutrisi.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNutrisi, 75, 60, 600, 26);
+        UIUtil.setupLabelLayout(labelNutrisi, 75, 55, 600, 26);
 
         labelStatus = new Label();
         labelStatus.getStyleClass().add("label-status");
-        UIUtil.setupLabelLayout(labelStatus, 250, 83, 250, 26);
+        UIUtil.setupLabelLayout(labelStatus, 250, 78, 250, 26);
 
         updateTotalLabels(labelKalori, labelNutrisi, labelStatus, foods, userProfile);
 
@@ -169,7 +169,9 @@ public class DailyReportScene {
 
         if (totalKalori > userProfile.getCalorieNeeds()) {
             labelStatus.setText("Asupan kalori melebihi batas!");
-        } 
+        } else {
+            labelStatus.setText("");
+        }
 
         String proteinNeeds = "Protein: " + totalProtein + "/" + String.format("%.2f", userProfile.getProteinNeeds()) + "g, ";
         String fatNeeds = "Lemak: " + totalFat + "/" + String.format("%.2f", userProfile.getFatNeeds()) + "g, "; 

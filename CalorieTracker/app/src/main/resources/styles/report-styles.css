@@ -1,20 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-.button-profilsaya{
+.button-profil{
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
-    border-width: 2px;
-    -fx-border-width: 2px;
-    padding: 5;
-    -fx-padding: 5;
-    -fx-prompt-text-fill: #75493A;
-    max-width: 380px;
-    -fx-max-width: 380px;
-    max-height: 50;
-    -fx-max-height: 50;
-    min-height: 30;
-    -fx-min-height: 30;
-    -fx-text-fill: #75493A;
+    -fx-text-fill: #720808;
+    -fx-background-radius: 0;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-size: 15px;
@@ -26,24 +16,15 @@
 .button-laporan{
     background-color: #FDCCD1;
     -fx-background-color: #FDCCD1;
-    border-width: 2px;
-    -fx-border-width: 2px;
-    padding: 5;
-    -fx-padding: 5;
-    -fx-prompt-text-fill: #75493A;
-    max-width: 373px;
-    -fx-max-width: 373px;
-    max-height: 50;
-    -fx-max-height: 50;
-    min-height: 30;
-    -fx-min-height: 30;
-    -fx-text-fill:#75493A;
+    -fx-text-fill:#720808;
+    -fx-background-radius: 0;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-size: 15px;
     -fx-font-size: 15px;
     font-weight: bold;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #720808, 5, 0.1, 0, 0);
 }
 
 .button-tambah{
@@ -87,7 +68,7 @@
 }
 
 .label-kalori{
-    -fx-text-fill: #3B6959;
+    -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
     font-size: 20px;

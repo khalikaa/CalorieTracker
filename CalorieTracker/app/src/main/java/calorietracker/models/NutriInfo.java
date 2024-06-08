@@ -4,6 +4,7 @@ public class NutriInfo extends Model {
     String nama;
     int energi, berat;
     double protein, lemak, karbohidrat;
+    boolean isSelected; 
 
     public NutriInfo(int id, String nama, int energi, double protein, double lemak, double karbohidrat,int berat) {
         super(id);
@@ -62,4 +63,13 @@ public class NutriInfo extends Model {
     public void setKarbohidrat(double karbohidrat) {
         this.karbohidrat = karbohidrat;
     }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
 }
