@@ -72,16 +72,19 @@ public class AKGCountScene {
         boxGender = new ComboBox<>();
         boxGender.getItems().addAll("Perempuan","Laki-Laki");
         boxGender.setValue("Perempuan");
-        boxGender.setPrefWidth(150);
+        boxGender.setPrefWidth(160);
         boxGender.setPrefHeight(30);
+        boxGender.getStyleClass().add("custom-combo-box");
+
 
         Label labelAktivitas = new Label("Tingkat Aktivitas:");
         labelAktivitas.getStyleClass().add("label-form");
         boxAktivitas = new ComboBox<>();
         boxAktivitas.getItems().addAll("Kurang Aktif", "Cukup Aktif","Aktif", "Sangat Aktif"); 
         boxAktivitas.setValue("Kurang Aktif");
-        boxAktivitas.setPrefWidth(150);
+        boxAktivitas.setPrefWidth(160);
         boxAktivitas.setPrefHeight(30);
+        boxAktivitas.getStyleClass().add("custom-combo-box");
 
         GridPane gridPane = new GridPane();
         gridPane.setVgap(5);
@@ -100,15 +103,15 @@ public class AKGCountScene {
         gridPane.add(boxGender, 0, 5);
         gridPane.add(labelAktivitas, 1, 4);
         gridPane.add(boxAktivitas, 1, 5);
-        UIUtil.setupGridPaneLayout(gridPane, 50, 85, 360, 175);
+        UIUtil.setupGridPaneLayout(gridPane, 50, 85, 400, 175);
 
         Button buttonHitungAKG = new Button("Hitung AKG");
         buttonHitungAKG.getStyleClass().add("button-akg");
-        UIUtil.setupButtonLayout(buttonHitungAKG, 130, 285, 200, 10);
+        UIUtil.setupButtonLayout(buttonHitungAKG, 130, 288, 200, 10);
 
         labelHasil = new Label();
         labelHasil.getStyleClass().add("label-ket-akg");
-        UIUtil.setupLabelLayout(labelHasil, 68, 320, 325, 26);
+        UIUtil.setupLabelLayout(labelHasil, 68, 323, 325, 26);
 
         hasilHitungAKG = new Label();
         hasilHitungAKG.getStyleClass().add("label-hasil-akg");
@@ -116,19 +119,19 @@ public class AKGCountScene {
 
         labelNut1 = new Label();
         labelNut1.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNut1, 57, 370, 347, 20);
+        UIUtil.setupLabelLayout(labelNut1, 57, 373, 347, 20);
 
         labelNut2 = new Label();
         labelNut2.getStyleClass().add("label-nutrisi");
-        UIUtil.setupLabelLayout(labelNut2, 100, 385, 263, 20);
+        UIUtil.setupLabelLayout(labelNut2, 100, 388, 263, 20);
 
         labelStatus = new Label();
         labelStatus.getStyleClass().add("label-status");
-        UIUtil.setupLabelLayout(labelStatus, 125, 426, 200, 20);
+        UIUtil.setupLabelLayout(labelStatus, 80, 328, 300, 20);
 
         buttonSimpan = new Button("Simpan Hasil AKG");
         buttonSimpan.getStyleClass().add("button-simpan");
-        UIUtil.setupButtonLayout(buttonSimpan, 130, 410, 200, 25);
+        UIUtil.setupButtonLayout(buttonSimpan, 130, 413, 200, 25);
         buttonSimpan.setVisible(false);
 
         Label labelHead1 = new Label("Apa Itu AKG?");
@@ -261,6 +264,7 @@ public class AKGCountScene {
             hasilHitungAKG.setText(hasilAKG + " Kalori");
             labelNut1.setText("Anda membutuhkan sekitar " + sprotein + slemak);
             labelNut2.setText("dan " + skarbo);
+            labelStatus.setText("");
             buttonSimpan.setVisible(true);
             userProfile.setName(textFieldNama.getText());
             userProfile.setHeight(tb);
@@ -273,7 +277,7 @@ public class AKGCountScene {
             userProfile.setFatNeeds(lemak);
             userProfile.setCarboNeeds(karbo);
         } catch (NumberFormatException ex) {
-            labelHasil.setText("Input tidak valid.");
+            labelStatus.setText("Input tidak valid.");
         }
     }
 

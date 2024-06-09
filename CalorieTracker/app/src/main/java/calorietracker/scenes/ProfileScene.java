@@ -72,7 +72,7 @@ public class ProfileScene {
 
         Button buttonSingOut = new Button("SIGN OUT");
         buttonSingOut.getStyleClass().add("button-sign-out");
-        UIUtil.setupButtonLayout(buttonSingOut, 275, 395, 200, 40);
+        UIUtil.setupButtonLayout(buttonSingOut, 275, 392, 200, 40);
         buttonSingOut.setOnAction(e-> {
             StartingScene startingScene = new StartingScene(stage);
             startingScene.show();
@@ -91,7 +91,7 @@ public class ProfileScene {
         });
 
         VBox vBoxProfil = new VBox(labelAKG, labelNama, labelUsia, labelBB, labelTB, labelJK, labelTA, labelProtein, labelLemak, labelKarbo);
-        UIUtil.setupVBoxLayout(vBoxProfil, 223, 90, 304, 233);
+        UIUtil.setupVBoxLayout(vBoxProfil, 233, 85, 305, 233);
         
         root.getChildren().addAll(labelTitle, vBoxProfil, buttonHitungUlang, buttonSingOut, labelLaporan, labelProfil);
         Scene scene = new Scene(root, 750, 500);

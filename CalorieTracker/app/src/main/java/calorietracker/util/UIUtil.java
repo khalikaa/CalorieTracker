@@ -2,6 +2,7 @@ package calorietracker.util;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BackgroundImage;
@@ -10,7 +11,6 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class UIUtil {
     public static BackgroundImage createBackgroundImage(String imagePath, double width, double height) {
@@ -44,6 +44,13 @@ public class UIUtil {
         textField.setLayoutY(y);
         textField.setPrefWidth(width);
         textField.setPrefHeight(height);
+    }
+
+    public static void setupPasswordFieldLayout(PasswordField pf, double x, double y, double width, double height) {
+        pf.setLayoutX(x);
+        pf.setLayoutY(y);
+        pf.setPrefWidth(width);
+        pf.setPrefHeight(height);
     }
 
     public static void setupVBoxLayout(VBox vb, double x, double y, double width, double height) {

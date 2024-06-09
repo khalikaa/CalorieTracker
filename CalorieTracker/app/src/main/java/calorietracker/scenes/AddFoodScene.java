@@ -91,7 +91,7 @@ public class AddFoodScene {
         TableColumn<NutriInfo, String> kolomLemak = new TableColumn<>("Lemak (g)");
         TableColumn<NutriInfo, String> kolomKarbo = new TableColumn<>("Karbo (g)");
         TableColumn<NutriInfo, String> kolomBerat = new TableColumn<>("Berat (g)");
-        TableColumn<NutriInfo, String> kolomTambah = new TableColumn<>("Tambah");
+        TableColumn<NutriInfo, String> kolomPilih = new TableColumn<>("Pilih");
 
         kolomNama.setPrefWidth(150);
         kolomEnergi.setPrefWidth(70);
@@ -111,11 +111,11 @@ public class AddFoodScene {
         UIUtil.setupLabelLayout(statusLabel, 299, 464, 152, 21);
         statusLabel.getStyleClass().add("label-status");
 
-        kolomTambah.setCellFactory(new Callback<TableColumn<NutriInfo, String>, TableCell<NutriInfo, String>>() {
+        kolomPilih.setCellFactory(new Callback<TableColumn<NutriInfo, String>, TableCell<NutriInfo, String>>() {
             @Override
             public TableCell<NutriInfo, String> call(TableColumn<NutriInfo, String> param) {
                 return new TableCell<NutriInfo, String>() {
-                    Button buttonTambah = new Button("Tambah");
+                    Button buttonPilih = new Button("Pilih");
 
                     @Override
                     protected void updateItem(String item, boolean empty) {
@@ -125,9 +125,9 @@ public class AddFoodScene {
                             setText(null);
                         } else {
                             NutriInfo selectedFood = getTableView().getItems().get(getIndex());
-                            buttonTambah.setDisable(selectedFood.isSelected()); // Nonaktifkan tombol jika sudah dipilih
+                            buttonPilih.setDisable(selectedFood.isSelected()); 
 
-                            buttonTambah.setOnAction(event -> {
+                            buttonPilih.setOnAction(event -> {
                                 SelectedFood food = new SelectedFood(
                                     user_id,
                                     selectedFood.getNama(),
@@ -140,18 +140,16 @@ public class AddFoodScene {
                                 );
                                 SelectedFoodController.addSelectedFood(user_id, food);
 
-                                // Tandai item sebagai dipilih dan pindahkan ke atas
                                 selectedFood.setSelected(true);
                                 value++;
                                 statusLabel.setText(value + " item dipilih");
 
-                                // Urutkan ulang daftar dengan item yang dipilih di atas
                                 List<NutriInfo> sortedFoods = foods.stream()
                                     .sorted((f1, f2) -> Boolean.compare(f2.isSelected(), f1.isSelected()))
                                     .collect(Collectors.toList());
                                 foods.setAll(sortedFoods);
                             });
-                            setGraphic(buttonTambah);
+                            setGraphic(buttonPilih);
                             setText(null);
                         }
                     }
@@ -159,7 +157,7 @@ public class AddFoodScene {
             }
         });
 
-        foodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomTambah);
+        foodsTableView.getColumns().addAll(kolomNama, kolomEnergi, kolomProtein, kolomLemak, kolomKarbo, kolomBerat, kolomPilih);
         foodsTableView.setItems(foods);
         foodsTableView.setPrefWidth(600);
         foodsTableView.setPrefHeight(275);

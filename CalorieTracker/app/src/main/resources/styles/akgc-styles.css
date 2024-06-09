@@ -107,8 +107,8 @@
     -fx-text-fill: #720808;
     font-family: 'Poppins';
     -fx-font-family: 'Poppins';
-    font-size: 11px;
-    -fx-font-size: 11px;
+    font-size: 13px;
+    -fx-font-size: 13px;
     -fx-alignment: center;
 }
 
@@ -160,4 +160,40 @@
     -fx-font-size: 13px;
     font-weight: bold;
     -fx-font-weight: bold;
+}
+
+.custom-combo-box {
+    background-color: #FCF9F2;
+    -fx-background-color:#FCF9F2;
+    border-color: #3B6959;
+    -fx-border-color: #3B6959;
+    border-width: 2px;
+    -fx-border-width: 2px;
+    border-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: #3B6959;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+}
+
+.custom-combo-box .arrow {
+    background-color: #3B6959;
+    -fx-background-color:#3B6959;
+}
+
+.custom-combo-box .list-cell {
+    background-color: #FCF9F2;
+    -fx-background-color:#FCF9F2;
+    -fx-text-fill: black;
+    -fx-background-radius: 10;
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    border-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.custom-combo-box .list-cell:selected {
+    background-color: #95ECC6;
+    -fx-background-color: #95ECC6;
 }

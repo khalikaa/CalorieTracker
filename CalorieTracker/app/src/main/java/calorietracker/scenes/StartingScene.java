@@ -3,90 +3,100 @@ package calorietracker.scenes;
 import calorietracker.controllers.UsersController;
 import calorietracker.models.User;
 import calorietracker.util.SessionUtil;
-import javafx.geometry.Insets;
+import calorietracker.util.UIUtil;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class StartingScene {
     private Stage stage;
-    private VBox mainLayout;
     private TextField textFieldUsername;
     private PasswordField passwordField;
     private Label labelStatus;
+    private Pane root;
+    private Label labelMark;
 
     public StartingScene(Stage stage) {
         this.stage = stage;
+        this.root = new Pane();
+        initializeUI();
     }
 
-    public void show() {
-        Image image = new Image(getClass().getResourceAsStream("/images/starting_scene.png"));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(750);
-        imageView.setFitHeight(500);
-        imageView.setPreserveRatio(false);
+    private void initializeUI() {
+        BackgroundImage backgroundImage = UIUtil.createBackgroundImage("/images/starting_scene.png", 750, 500);
+        Background background = new Background(backgroundImage);
+        root.setBackground(background);
 
         Label labelCalorie = new Label("Calorie");
         labelCalorie.getStyleClass().add("label-calorie");
+        UIUtil.setupLabelLayout(labelCalorie, 375, 34, 335, 84);
 
         Label labelTracker = new Label("Tracker");
         labelTracker.getStyleClass().add("label-tracker");
+        UIUtil.setupLabelLayout(labelTracker, 375, 102, 335, 84);
 
-        VBox boxTitle = new VBox(labelCalorie, labelTracker);
-        boxTitle.setAlignment(Pos.CENTER);
-        VBox.setMargin(boxTitle, new Insets(0, 0, 30, 0));
+        labelMark = new Label();
+        UIUtil.setupLabelLayout(labelMark, 444, 196, 189, 29);
 
         textFieldUsername = new TextField();
         textFieldUsername.setPromptText("Username");
-        textFieldUsername.getStyleClass().add("tf-username");
+        UIUtil.setupTextFieldLayout(textFieldUsername, 413, 237, 260, 45);
 
         passwordField = new PasswordField();
         passwordField.setPromptText("Password");
-        passwordField.getStyleClass().add("tf-password");
+        UIUtil.setupPasswordFieldLayout(passwordField, 413, 293, 260, 45);
 
         labelStatus = new Label();
         labelStatus.getStyleClass().add("red-label");
 
-        mainLayout = new VBox(11, boxTitle);
-        mainLayout.setAlignment(Pos.CENTER);
-        mainLayout.setPadding(new Insets(0, 0, 40, 325));
+        root.getChildren().addAll(labelCalorie, labelTracker, labelMark, labelStatus);
+    }
 
-        StackPane stackPane = new StackPane(imageView, mainLayout);
-        VBox root = new VBox(stackPane);
+    public void show() {
         Scene scene = new Scene(root, 750, 500);
         scene.getStylesheets().add(getClass().getResource("/styles/starting-styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-
         showLogin();
     }
 
     private void showLogin() {
-        mainLayout.getChildren().removeIf(node -> node != mainLayout.getChildren().get(0));
+        clearMainLayout();
+        
+        // Tambahkan kelas CSS yang sesuai
+        textFieldUsername.getStyleClass().setAll("tf-pink");
+        passwordField.getStyleClass().setAll("tf-pink");
 
-        Button buttonLogin = new Button("LOG IN");
-        buttonLogin.getStyleClass().add("starting-button");
+        labelMark.getStyleClass().setAll("green-mark");
+        labelMark.setText("Welcome back!");
+
+        Button buttonLogin = new Button("SIGN IN");
+        buttonLogin.getStyleClass().add("signin-button");
+        UIUtil.setupButtonLayout(buttonLogin, 413, 384, 259, 44);
 
         Label labelRegisterSwitch = new Label("Belum punya akun? Daftar di sini!");
         labelRegisterSwitch.getStyleClass().add("red-label");
 
         VBox loginLayout = new VBox(11, textFieldUsername, passwordField, labelStatus, buttonLogin, labelRegisterSwitch);
         loginLayout.setAlignment(Pos.CENTER);
+        loginLayout.setLayoutX(413);
+        loginLayout.setLayoutY(237);
 
-        mainLayout.getChildren().add(loginLayout);
+        root.getChildren().add(loginLayout);
 
         labelRegisterSwitch.setOnMouseClicked(e -> {
             showRegister();
             textFieldUsername.setText("");
             passwordField.setText("");
+            labelStatus.setText("");
         });
 
         buttonLogin.setOnAction(e -> {
@@ -111,30 +121,40 @@ public class StartingScene {
     }
 
     private void showRegister() {
-        mainLayout.getChildren().removeIf(node -> node != mainLayout.getChildren().get(0));
+        clearMainLayout();
+
+        textFieldUsername.getStyleClass().setAll("tf-green");
+        passwordField.getStyleClass().setAll("tf-green");
+
+        labelMark.getStyleClass().setAll("red-mark");
+        labelMark.setText("Create new account");
 
         Button buttonSignup = new Button("SIGN UP");
-        buttonSignup.getStyleClass().add("starting-button");
+        buttonSignup.getStyleClass().add("signup-button");
+        UIUtil.setupButtonLayout(buttonSignup, 413, 384, 259, 44);
 
         Label labelLoginSwitch = new Label("Sudah punya akun? Masuk di sini!");
         labelLoginSwitch.getStyleClass().add("red-label");
 
         VBox registerLayout = new VBox(11, textFieldUsername, passwordField, labelStatus, buttonSignup, labelLoginSwitch);
         registerLayout.setAlignment(Pos.CENTER);
+        registerLayout.setLayoutX(413);
+        registerLayout.setLayoutY(237);
 
-        mainLayout.getChildren().add(registerLayout);
+        root.getChildren().add(registerLayout);
 
         labelLoginSwitch.setOnMouseClicked(e -> {
             showLogin();
             textFieldUsername.setText("");
             passwordField.setText("");           
+            labelStatus.setText("");
         });
 
         buttonSignup.setOnAction(e -> {
             String username = textFieldUsername.getText();
             String password = passwordField.getText();
             if (username.isEmpty() || password.isEmpty()) {
-                labelStatus.setText("Data tidak boleh kosong!");
+                labelStatus.setText("Email dan password harus diisi!");
                 return;
             }
             boolean isSuccessfullRegister = UsersController.register(username, password);
@@ -143,8 +163,12 @@ public class StartingScene {
                 AKGCountScene akgCountScene = new AKGCountScene(stage);
                 akgCountScene.show();
             } else {
-                labelStatus.setText("Gagal mendaftar. Username tidak tersedia!");
+                labelStatus.setText("Username tidak tersedia!");
             }
         });
+    }
+
+    private void clearMainLayout() {
+        root.getChildren().removeIf(node -> node instanceof VBox);
     }
 }

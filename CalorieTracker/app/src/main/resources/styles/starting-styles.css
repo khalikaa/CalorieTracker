@@ -5,10 +5,7 @@
     -fx-font-family: 'Poppins';
     font-weight: 900;
     -fx-font-weight: 900;
-    max-height: 80px;
-    -fx-max-height: 80px;
-    min-height: 80px;
-    -fx-min-height: 80px;
+    -fx-alignment: center;
     font-size: 75px;
     -fx-font-size: 75px;
     -fx-text-fill: #95ECC6;
@@ -20,17 +17,36 @@
     -fx-font-family: 'Poppins';
     font-weight: 900;
     -fx-font-weight: 900;
+    -fx-alignment: center;
     font-size: 75px;
     -fx-font-size: 75px;
-    max-height: 80px;
-    -fx-max-height: 80px;
-    min-height: 80px;
-    -fx-min-height: 80px;
     -fx-text-fill: #FFB8BF;
     -fx-effect: dropshadow(gaussian, #720808, 0, 0, 3, 3);
 }
 
-.tf-username {
+.green-mark {
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #2f5447;
+}
+
+.red-mark {
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    font-size: 17px;
+    -fx-font-size: 17px;
+    -fx-text-fill: #720808;
+}
+
+.tf-green {
     background-color: #95ECC6;
     -fx-background-color: #95ECC6;
     border-width: 1.5px;
@@ -48,15 +64,9 @@
     padding: 0px 15px;
     -fx-padding: 0px 15px;
     -fx-text-fill: #2f5447;
-    max-width: 260px;
-    -fx-max-width: 260px;
-    max-height: 45;
-    -fx-max-height: 45;
-    min-height: 45;
-    -fx-min-height: 45;
 }
 
-.tf-password {
+.tf-pink {
     background-color: #FFB8BF;
     -fx-background-color: #FFB8BF;
     border-width: 1.5px;
@@ -74,15 +84,9 @@
     padding: 0px 15px;
     -fx-padding: 0px 15px;
     -fx-text-fill: #720808;
-    max-width: 260px;
-    -fx-max-width: 260px;
-    max-height: 45;
-    -fx-max-height: 45;
-    min-height: 45;
-    -fx-min-height: 45;
 }
 
-.starting-button {
+.signin-button {
     background-color: #95ECC6; 
     -fx-background-color: #95ECC6; 
     border-color: #2f5447; 
@@ -100,12 +104,26 @@
     -fx-font-size: 20px;
     -fx-text-fill: #2f5447; 
     -fx-alignment: center;
-    max-width: 260px;
-    -fx-max-width: 260px;
-    max-height: 45;
-    -fx-max-height: 45;
-    min-height: 45;
-    -fx-min-height: 45;
+}
+
+.signup-button {
+    background-color: #FFB8BF; 
+    -fx-background-color: #FFB8BF; 
+    border-color: #720808; 
+    -fx-border-color: #720808;  
+    border-radius: 50;  
+    -fx-border-radius: 50;     
+    border-width: 1.5px; 
+    -fx-border-width: 1.5px;   
+    -fx-background-radius: 50; 
+    font-family: 'Poppins';
+    -fx-font-family: 'Poppins';
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 20px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #720808; 
+    -fx-alignment: center;
 }
 
 .red-label {
