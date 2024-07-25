@@ -1,3 +1,4 @@
+# CalorieTracker
 **CalorieTracker adalah aplikasi untuk menghitung angka kecukupan gizi sesuai profil pengguna serta melacak asupan kalori harian dengan memasukkan makanan yang dikonsumsi setiap harinya.**
 
 ## Nama Tim: Gen-C
